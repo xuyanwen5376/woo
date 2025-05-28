@@ -1,5 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:woo/common/routers/observers.dart';
+import 'package:woo/pages/system/buttons/view.dart';
 import 'package:woo/pages/system/icon/view.dart';
 import 'package:woo/pages/system/image/view.dart';
 import 'package:woo/pages/system/login/index.dart';
@@ -29,5 +30,6 @@ class RoutePages {
     GetPage(name: RouteNames.systemText, page: () => const TextPage()),
     GetPage(name: RouteNames.systemImage, page: () => const ImagePage()),
     GetPage(name: RouteNames.systemIcon, page: () => const IconPage()),
+    GetPage(name: RouteNames.systemButtons, page: () => const ButtonsPage()),
   ];
 }

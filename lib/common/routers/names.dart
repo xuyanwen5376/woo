@@ -6,4 +6,5 @@ static const systemLogin = '/system_login';
 static const systemMain = '/system_main';
 static const systemSplash = '/system_splash';
 static const systemText = '/system_text';
+static const systemButtons = '/system_buttons';
 }
