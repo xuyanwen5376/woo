@@ -1,5 +1,6 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:woo/common/routers/observers.dart';
+import 'package:woo/pages/system/image/view.dart';
 import 'package:woo/pages/system/login/index.dart';
 import 'package:woo/pages/system/text/view.dart';
 
@@ -7,10 +8,9 @@ import '../../pages/system/splash/view.dart';
 import 'names.dart';
 
 class RoutePages {
-
-   // 历史记录
+  // 历史记录
   static List<String> history = [];
-// 观察者
+  // 观察者
   static RouteObservers observer = RouteObservers();
 
   // 列表
@@ -25,9 +25,7 @@ class RoutePages {
       page: () => const SplashPage(), // e same binding for now
     ),
     GetPage(name: RouteNames.systemSplash, page: () => const SplashPage()),
-    GetPage(
-        name: RouteNames.systemText,
-        page: () => const TextPage(),
-      ),
+    GetPage(name: RouteNames.systemText, page: () => const TextPage()),
+    GetPage(name: RouteNames.systemImage, page: () => const ImagePage()),
   ];
 }

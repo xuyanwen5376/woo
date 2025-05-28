@@ -1,3 +1,4 @@
 /// svgs assets
 class AssetsSvgs {
+  
 }

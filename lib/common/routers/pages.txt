@@ -1,5 +1,9 @@
 
       GetPage(
+        name: RouteNames.systemImage,
+        page: () => const ImagePage(),
+      ),
+      GetPage(
         name: RouteNames.systemLogin,
         page: () => const LoginPage(),
       ),
