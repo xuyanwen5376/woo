@@ -1,6 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:woo/common/routers/observers.dart';
 import 'package:woo/pages/system/login/index.dart';
+import 'package:woo/pages/system/text/view.dart';
 
 import '../../pages/system/splash/view.dart';
 import 'names.dart';
@@ -24,5 +25,9 @@ class RoutePages {
       page: () => const SplashPage(), // e same binding for now
     ),
     GetPage(name: RouteNames.systemSplash, page: () => const SplashPage()),
+    GetPage(
+        name: RouteNames.systemText,
+        page: () => const TextPage(),
+      ),
   ];
 }

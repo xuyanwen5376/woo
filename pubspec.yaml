@@ -42,6 +42,7 @@ dependencies:
   shared_preferences: ^2.5.3
   dio: ^5.8.0+1
   adaptive_theme: ^3.7.0
+  ducafe_ui_core: ^1.0.6
 
 dev_dependencies:
   flutter_test:
