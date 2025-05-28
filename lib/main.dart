@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
             theme: theme,
             darkTheme: darkTheme,
             // 路由
-            initialRoute: RouteNames.systemButtons,
+            initialRoute: RouteNames.systemInput,
             getPages: RoutePages.list,
             // 路由观察者
             // 这里的 RoutePages.observer 是一个自定义的路由观察者

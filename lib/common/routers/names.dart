@@ -7,4 +7,5 @@ static const systemMain = '/system_main';
 static const systemSplash = '/system_splash';
 static const systemText = '/system_text';
 static const systemButtons = '/system_buttons';
+static const systemInput = '/system_input';
 }
