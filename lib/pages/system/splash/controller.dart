@@ -19,6 +19,12 @@ String title = "";
     update(["=="]);
   }
 
+    // 主题
+  onThemeSelected(String themeKey) async {
+    await ConfigService.to.setThemeMode(themeKey);
+    update(["styles_index"]);
+  }
+
   void onTap(int ticket) {
     title = "GetBuilder -> 点击了第 $ticket 个按钮";
     update(['splash_title']);
