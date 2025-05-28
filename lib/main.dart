@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:woo/common/index.dart';
@@ -19,36 +20,55 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return AdaptiveTheme(
-      light: AppTheme.light,
-      dark: AppTheme.dark,
-      initial: ConfigService.to.themeMode,
-      // 主题切换按钮
-      debugShowFloatingThemeButton: true,
-      builder:
-          (theme, darkTheme) => GetMaterialApp(
-            // 标题
-            title: 'Flutter Demo',
-            // 主题
-            theme: theme,
-            darkTheme: darkTheme,
-            // 路由
-            initialRoute: RouteNames.systemInput,
-            getPages: RoutePages.list,
-            // 路由观察者
-            // 这里的 RoutePages.observer 是一个自定义的路由观察者
-            // 用于记录路由历史等功能
-            // 你可以在 lib/common/routers/observers.dart 中定义这个观察者
-            // 例如：
-            // class RouteObservers extends GetObserver {
-            navigatorObservers: [RoutePages.observer],
-            // 多语言
-            translations: Translation(), // 词典
-            localizationsDelegates: Translation.localizationsDelegates, // 代理
-            supportedLocales: Translation.supportedLocales, // 支持的语言种类
-            locale: ConfigService.to.locale, // 当前语言种类
-            fallbackLocale: Translation.fallbackLocale, // 默认语言种
-          ),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812), // 设计稿尺寸
+      minTextAdapt: true, // 最小文本适配
+      splitScreenMode: true, // 分屏模式
+      builder: (context, child) {
+        return AdaptiveTheme(
+          light: AppTheme.light,
+          dark: AppTheme.dark,
+          initial: ConfigService.to.themeMode,
+          // 主题切换按钮
+          debugShowFloatingThemeButton: true,
+          builder:
+              (theme, darkTheme) => GetMaterialApp(
+                // 标题
+                title: 'Flutter Demo',
+                // 主题
+                theme: theme,
+                darkTheme: darkTheme,
+                // 路由
+                initialRoute: RouteNames.systemInput,
+                getPages: RoutePages.list,
+                // 路由观察者
+                // 这里的 RoutePages.observer 是一个自定义的路由观察者
+                // 用于记录路由历史等功能
+                // 你可以在 lib/common/routers/observers.dart 中定义这个观察者
+                // 例如：
+                // class RouteObservers extends GetObserver {
+                navigatorObservers: [RoutePages.observer],
+                // 多语言
+                translations: Translation(), // 词典
+                localizationsDelegates:
+                    Translation.localizationsDelegates, // 代理
+                supportedLocales: Translation.supportedLocales, // 支持的语言种类
+                locale: ConfigService.to.locale, // 当前语言种类
+                fallbackLocale: Translation.fallbackLocale, // 默认语言种
+                debugShowCheckedModeBanner: false,
+                // builder
+                builder: (context, widget) {
+                  // 不随系统字体缩放比例
+                  return MediaQuery(
+                    data: MediaQuery.of(
+                      context,
+                    ).copyWith(textScaler: const TextScaler.linear(1.0)),
+                    child: widget!,
+                  );
+                },
+              ),
+        );
+      },
     );
   }
 }
