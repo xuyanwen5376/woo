@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:woo/common/values/images.dart';
 import 'package:woo/common/widgets/image.dart';
-
-import '../../../common/services/config.dart';
+ 
 import 'index.dart';
 
 class SplashPage extends GetView<SplashController> {

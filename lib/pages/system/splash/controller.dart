@@ -36,9 +36,9 @@ class SplashController extends GetxController {
     update(['splash_title']);
   }
 
-  _initData() {
-    update(["splash"]);
-  }
+  // _initData() {
+  //   update(["splash"]);
+  // }
 
   // @override
   // void onInit() {
