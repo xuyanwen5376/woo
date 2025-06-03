@@ -3,8 +3,6 @@ import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:woo/common/widgets/image.dart';
 import 'package:woo/common/widgets/text.dart';
-
-import '../index.dart';
 import '../models/welcome_model.dart';
 
 /// 欢迎 slider
