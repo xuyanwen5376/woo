@@ -31,3 +31,7 @@
         name: RouteNames.systemText,
         page: () => const TextPage(),
       ),
+      GetPage(
+        name: RouteNames.systemWelcome,
+        page: () => const WelcomePage(),
+      ),

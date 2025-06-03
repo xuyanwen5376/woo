@@ -6,6 +6,7 @@ import 'package:woo/pages/system/image/view.dart';
 import 'package:woo/pages/system/input/view.dart';
 import 'package:woo/pages/system/login/index.dart';
 import 'package:woo/pages/system/text/view.dart';
+import 'package:woo/pages/system/welcome/view.dart';
 
 import '../../pages/system/splash/view.dart';
 import 'names.dart';
@@ -32,11 +33,9 @@ class RoutePages {
     GetPage(name: RouteNames.systemImage, page: () => const ImagePage()),
     GetPage(name: RouteNames.systemIcon, page: () => const IconPage()),
     GetPage(name: RouteNames.systemButtons, page: () => const ButtonsPage()),
-    
 
-      GetPage(
-        name: RouteNames.systemInput,
-        page: () => const InputPage(),
-      ),
+    GetPage(name: RouteNames.systemWelcome, page: () => const WelcomePage()),
+
+    GetPage(name: RouteNames.systemInput, page: () => const InputPage()),
   ];
 }

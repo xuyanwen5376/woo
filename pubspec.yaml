@@ -45,6 +45,7 @@ dependencies:
   ducafe_ui_core: ^1.0.6
   cached_network_image: ^3.4.1
   flutter_svg: ^2.1.0
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +58,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
   icons_launcher: ^3.0.1
+  flutter_native_splash: ^2.4.6
  
 # app 图标
 icons_launcher:
@@ -70,6 +72,14 @@ icons_launcher:
       adaptive_foreground_image: "assets/icons/ic_foreground.png"
     ios:
       enable: true
+
+# 启动图适配 android 11 及以下, 12 以上，IOS
+flutter_native_splash:
+  web: false
+  color_android: "#ffffff" 
+  background_image_ios: "assets/launcher/background.png"
+  android_12:
+    image: "assets/launcher/android12.png" 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
