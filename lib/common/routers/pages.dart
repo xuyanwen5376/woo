@@ -1,10 +1,13 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:woo/common/routers/observers.dart';
 import 'package:woo/pages/system/buttons/view.dart';
+import 'package:woo/pages/system/form/view.dart' show FormPage;
 import 'package:woo/pages/system/icon/view.dart';
 import 'package:woo/pages/system/image/view.dart';
 import 'package:woo/pages/system/input/view.dart';
 import 'package:woo/pages/system/login/index.dart';
+import 'package:woo/pages/system/main/view.dart';
+import 'package:woo/pages/system/register/view.dart';
 import 'package:woo/pages/system/text/view.dart';
 import 'package:woo/pages/system/welcome/view.dart';
 
@@ -36,6 +39,12 @@ class RoutePages {
 
     GetPage(name: RouteNames.systemWelcome, page: () => const WelcomePage()),
 
+    GetPage(name: RouteNames.systemMain, page: () => const MainPage()),
+
     GetPage(name: RouteNames.systemInput, page: () => const InputPage()),
+
+    GetPage(name: RouteNames.systemForm, page: () => const FormPage()),
+
+    GetPage(name: RouteNames.systemRegister, page: () => const RegisterPage()),
   ];
 }

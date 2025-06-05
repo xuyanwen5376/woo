@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:woo/common/i18n/locale_keys.dart';
 import 'package:woo/common/models/welcome_model.dart';
 import 'package:woo/common/routers/names.dart';
+import 'package:woo/common/services/config.dart';
 import 'package:woo/common/values/images.dart';
 
 class WelcomeController extends GetxController {
@@ -71,6 +72,10 @@ class WelcomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+
+    // 设置已打开
+    ConfigService().setAlreadyOpen();
+    
     _initData();
   }
 

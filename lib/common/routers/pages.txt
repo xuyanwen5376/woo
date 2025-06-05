@@ -4,6 +4,10 @@
         page: () => const ButtonsPage(),
       ),
       GetPage(
+        name: RouteNames.systemForm,
+        page: () => const FormPage(),
+      ),
+      GetPage(
         name: RouteNames.systemIcon,
         page: () => const IconPage(),
       ),
@@ -22,6 +26,10 @@
       GetPage(
         name: RouteNames.systemMain,
         page: () => const MainPage(),
+      ),
+      GetPage(
+        name: RouteNames.systemRegister,
+        page: () => const RegisterPage(),
       ),
       GetPage(
         name: RouteNames.systemSplash,

@@ -1,9 +1,11 @@
 static const systemButtons = '/system_buttons';
+static const systemForm = '/system_form';
 static const systemIcon = '/system_icon';
 static const systemImage = '/system_image';
 static const systemInput = '/system_input';
 static const systemLogin = '/system_login';
 static const systemMain = '/system_main';
+static const systemRegister = '/system_register';
 static const systemSplash = '/system_splash';
 static const systemText = '/system_text';
 static const systemWelcome = '/system_welcome';
