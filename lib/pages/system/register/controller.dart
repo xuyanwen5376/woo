@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woo/common/models/request/user_register_req.dart';
 import 'package:woo/common/routers/names.dart';
+import 'package:woo/common/utils/encrypt.dart';
 
 class RegisterController extends GetxController {
   RegisterController();
@@ -37,18 +39,30 @@ class RegisterController extends GetxController {
 
   void onTap() {}
 
-// 注册
+  // 注册
   void onSignUp() {
-     if ((formKey.currentState as FormState).validate()) {
-    // 验证通过提交数据   
-      Get.toNamed(RouteNames.systemRegisterPin);
-  }
-    
+    if ((formKey.currentState as FormState).validate()) {
+      // aes 加密密码
+      var password = EncryptUtil().aesEncode(passwordController.text);
+      //var password = passwordController.text;
+      //验证通过
+      Get.offNamed(
+        RouteNames.systemRegisterPin,
+        arguments: UserRegisterReq(
+          username: userNameController.text,
+          email: emailController.text,
+          firstName: firstNameController.text,
+          lastName: lastNameController.text,
+          password: password,
+        ),
+      );
+      // // 验证通过提交数据
+      //   Get.toNamed(RouteNames.systemRegisterPin);
+    }
   }
 
   // 登录
   void onSignIn() {}
-
 
   // @override
   // void onInit() {
