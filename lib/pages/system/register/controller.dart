@@ -35,9 +35,14 @@ class RegisterController extends GetxController {
   }
 
   void onTap() {}
-  
+
 // 注册
-  void onSignUp() {}
+  void onSignUp() {
+     if ((formKey.currentState as FormState).validate()) {
+    // 验证通过提交数据
+  }
+    
+  }
 
   // 登录
   void onSignIn() {}
