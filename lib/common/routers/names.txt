@@ -6,6 +6,7 @@ static const systemInput = '/system_input';
 static const systemLogin = '/system_login';
 static const systemMain = '/system_main';
 static const systemRegister = '/system_register';
+static const systemRegisterPin = '/system_register_pin';
 static const systemSplash = '/system_splash';
 static const systemText = '/system_text';
 static const systemWelcome = '/system_welcome';

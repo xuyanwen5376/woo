@@ -11,4 +11,5 @@ class RouteNames {
   static const systemWelcome = '/system_welcome';
   static const systemForm = '/system_form';
   static const systemRegister = '/system_register';
+  static const systemRegisterPin = '/system_register_pin';
 }

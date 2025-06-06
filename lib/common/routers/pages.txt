@@ -32,6 +32,10 @@
         page: () => const RegisterPage(),
       ),
       GetPage(
+        name: RouteNames.systemRegisterPin,
+        page: () => const RegisterPinPage(),
+      ),
+      GetPage(
         name: RouteNames.systemSplash,
         page: () => const SplashPage(),
       ),

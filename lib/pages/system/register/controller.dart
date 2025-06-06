@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:woo/common/routers/names.dart';
 
 class RegisterController extends GetxController {
   RegisterController();
@@ -39,7 +40,8 @@ class RegisterController extends GetxController {
 // 注册
   void onSignUp() {
      if ((formKey.currentState as FormState).validate()) {
-    // 验证通过提交数据
+    // 验证通过提交数据   
+      Get.toNamed(RouteNames.systemRegisterPin);
   }
     
   }

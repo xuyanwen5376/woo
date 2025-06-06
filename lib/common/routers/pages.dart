@@ -8,6 +8,7 @@ import 'package:woo/pages/system/input/view.dart';
 import 'package:woo/pages/system/login/index.dart';
 import 'package:woo/pages/system/main/view.dart';
 import 'package:woo/pages/system/register/view.dart';
+import 'package:woo/pages/system/register_pin/view.dart';
 import 'package:woo/pages/system/text/view.dart';
 import 'package:woo/pages/system/welcome/view.dart';
 
@@ -46,5 +47,10 @@ class RoutePages {
     GetPage(name: RouteNames.systemForm, page: () => const FormPage()),
 
     GetPage(name: RouteNames.systemRegister, page: () => const RegisterPage()),
+
+    GetPage(
+      name: RouteNames.systemRegisterPin,
+      page: () => const RegisterPinPage(),
+    ),
   ];
 }
