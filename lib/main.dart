@@ -19,9 +19,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       // 路由
-      initialRoute: RouteNames.login,
+      initialRoute: RouteNames.systemSplash,
       getPages: RoutePages.list,
-
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }

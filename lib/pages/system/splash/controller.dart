@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class SplashController extends GetxController {
   SplashController();
 
-  String title = "";
+  String title = "GetBuilder -> 点击了第 0 个按钮";
 
   _initData() {
     update(["splash"]);
