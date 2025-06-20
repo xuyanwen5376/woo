@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'common/index.dart';
+import 'global.dart';
 
-void main() {
+void main() async {
+  await Global.init();
   runApp(const MyApp());
 }
 
@@ -21,6 +23,7 @@ class MyApp extends StatelessWidget {
       // 路由
       initialRoute: RouteNames.systemSplash,
       getPages: RoutePages.list,
+      navigatorObservers: [RoutePages.observer],
       // home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
