@@ -10,5 +10,6 @@ class RoutePages {
       page: () => LoginPage(),
       binding: LoginBinding(),
     ),
+    GetPage(name: RouteNames.splash, page: () => SplashPage()),
   ];
 }

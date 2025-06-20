@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../common/index.dart';
 import 'index.dart';
 import 'widgets/widgets.dart';
 
@@ -18,6 +19,12 @@ class LoginPage extends GetView<LoginController> {
               controller.onTap(DateTime.now().microsecondsSinceEpoch);
             },
             child: const Text("点击"),
+          ), // 跳转
+          ElevatedButton(
+            onPressed: () {
+              Get.toNamed(RouteNames.splash);
+            },
+            child: const Text("跳转 splash"),
           ),
         ],
       ),

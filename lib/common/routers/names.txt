@@ -1,1 +1,2 @@
 static const login = '/login';
+static const systemSplash = '/system_splash';
