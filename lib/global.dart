@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'common/services/config.dart';
+import 'common/index.dart';
 
 class Global {
   static Future<void> init() async {
@@ -13,6 +12,8 @@ class Global {
       // 配置服务
       Get.putAsync<ConfigService>(() async => await ConfigService().init()),
     ]).whenComplete(() {});
+
+    // 工具类
+    Storage().init();
   }
 }
-
