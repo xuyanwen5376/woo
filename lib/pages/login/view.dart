@@ -9,7 +9,19 @@ class LoginPage extends GetView<LoginController> {
 
   // 主视图
   Widget _buildView() {
-    return const HelloWidget();
+    return Center(
+      child: Column(
+        children: [
+          HelloWidget(),
+          ElevatedButton(
+            onPressed: () {
+              controller.onTap(DateTime.now().microsecondsSinceEpoch);
+            },
+            child: const Text("点击"),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -18,9 +30,7 @@ class LoginPage extends GetView<LoginController> {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(title: const Text("login")),
-          body: SafeArea(
-            child: _buildView(),
-          ),
+          body: SafeArea(child: _buildView()),
         );
       },
     );

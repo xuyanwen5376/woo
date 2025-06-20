@@ -8,11 +8,13 @@ class LoginController extends GetxController {
   final state = LoginState();
 
   // tap
+  void onTap(int index) {
+    state.title = '点击了第$index个按钮';
+  }
+
+  // tap
   void handleTap(int index) {
-    Get.snackbar(
-      "标题",
-      "消息",
-    );
+    Get.snackbar("标题", "消息");
   }
 
   /// 在 widget 内存中分配后立即调用。
