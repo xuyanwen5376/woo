@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
 
 import '../../../common/index.dart';
@@ -37,8 +38,29 @@ class WelcomeController extends GetxController {
   /// 当前位置发生改变
   void onPageChanged(int index) {
     currentIndex = index;
+    
+   isShowStart = currentIndex == 2;
+
     update(['slider', 'bar']);
   }
+
+    /// 是否显示 Start
+  bool isShowStart = false;
+  /// slider 控制器
+  CarouselSliderController carouselController = CarouselSliderController();
+
+  /// 下一个
+  void onNext() {
+    carouselController.nextPage();
+  }
+  
+  /// 去首页
+  void onToMain() {
+    /// 跳转首页, 并关闭所有页面
+    Get.offAllNamed(RouteNames.systemMain);
+  }
+
+
 
   void onTap() {}
 
