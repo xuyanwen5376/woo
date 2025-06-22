@@ -120,6 +120,9 @@ dev_dependencies:
   # 应用图标生成
   flutter_launcher_icons: ^0.13.1
 
+  # 启动图生成
+  flutter_native_splash: ^2.4.0
+
 
 # app 图标
 icons_launcher:
