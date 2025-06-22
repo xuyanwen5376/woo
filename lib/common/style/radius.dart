@@ -4,7 +4,7 @@ class AppRadius {
   static double get button => 5;
 
   /// 输入框圆角
-  static double get input => 5;
+  static double get input => 10;
 
   /// 图片圆角
   static double get img => 4;
