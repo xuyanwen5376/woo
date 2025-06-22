@@ -175,14 +175,14 @@ flutter:
   # example:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-  fonts:
-    - family: Montserrat
-      fonts:
-        - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
-          weight: 700
+  # fonts:
+  #   - family: Montserrat
+  #     fonts:
+  #       - asset: assets/fonts/Montserrat/Montserrat-Light.ttf
+  #         weight: 300
+  #       - asset: assets/fonts/Montserrat/Montserrat-Regular.ttf
+  #         weight: 400
+  #       - asset: assets/fonts/Montserrat/Montserrat-Medium.ttf
+  #         weight: 500
+  #       - asset: assets/fonts/Montserrat/Montserrat-Bold.ttf
+  #         weight: 700

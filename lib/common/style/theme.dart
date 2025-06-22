@@ -21,21 +21,36 @@ class AppTheme {
 
   /// 亮色主题
   static ThemeData get light {
-    ColorScheme scheme = MaterialTheme.lightScheme();
+    ColorScheme scheme = MaterialTheme.lightScheme().copyWith(
+      primary: primary,
+      onPrimary: Colors.white,
+      secondary: secondary,
+      onSecondary: Colors.white,
+      surface: Colors.white,
+      onSurface: const Color(0xFF333333),
+      error: error,
+      onError: Colors.white,
+    );
     return _getTheme(scheme);
   }
 
   /// 暗色主题
   static ThemeData get dark {
-    ColorScheme scheme = MaterialTheme.darkScheme();
+    ColorScheme scheme = MaterialTheme.darkScheme().copyWith(
+      primary: primary,
+      // onPrimary: Colors.white,
+      secondary: secondary,
+      // onSecondary: Colors.white,
+      // surface: const Color(0xFF252525),
+      // onSurface: Colors.white,
+      error: error,
+      onError: Colors.white,
+    );
     return _getTheme(scheme);
   }
 
   /// 获取主题
   static ThemeData _getTheme(ColorScheme scheme) {
-    return ThemeData(
-      useMaterial3: false,
-      colorScheme: scheme,
-    );
+    return ThemeData(useMaterial3: false, colorScheme: scheme);
   }
 }

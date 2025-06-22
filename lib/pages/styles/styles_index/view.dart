@@ -28,6 +28,30 @@ class StylesIndexPage extends GetView<StylesIndexController> {
         ListTile(
           onTap: () => controller.onThemeSelected("system"),
           title: Text("系统 : ${ConfigService.to.themeMode}"),
+        ), // 文本
+        ListTile(
+          onTap: () => Get.toNamed(RouteNames.stylesText),
+          title: const Text("Text 文本"),
+        ),
+        // Image 图片
+        ListTile(
+          onTap: () => Get.toNamed(RouteNames.stylesImage),
+          title: const Text("Image 图片"),
+        ), // Icon 图标
+        ListTile(
+          onTap: () => Get.toNamed(RouteNames.stylesIcon),
+          title: const Text("Icon 图标"),
+        ),
+        // Button 按钮
+        ListTile(
+          onTap: () => Get.toNamed(RouteNames.stylesButton),
+          title: const Text("Button 按钮"),
+        ),
+
+        // Input 输入框
+        ListTile(
+          onTap: () => Get.toNamed(RouteNames.stylesInput),
+          title: const Text("Input 输入框"),
         ),
       ],
     );
