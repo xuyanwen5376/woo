@@ -32,6 +32,10 @@
         page: () => const ProductListPage(),
       ),
       GetPage(
+        name: RouteNames.msgMsgIndex,
+        page: () => const MsgIndexPage(),
+      ),
+      GetPage(
         name: RouteNames.myLanguage,
         page: () => const LanguagePage(),
       ),

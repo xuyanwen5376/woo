@@ -41,5 +41,5 @@ static const systemRegisterPin = '/system_register_pin';
 static const systemSplash = '/system_splash';
 static const systemUserAgreement = '/system_user_agreement';
 static const systemWelcome = '/system_welcome';
-
+static const systemMessageIndex = '/system_message_index';
 }
