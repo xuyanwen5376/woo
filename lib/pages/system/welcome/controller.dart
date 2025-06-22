@@ -53,7 +53,7 @@ class WelcomeController extends GetxController {
   void onNext() {
     carouselController.nextPage();
   }
-  
+
   /// 去首页
   void onToMain() {
     /// 跳转首页, 并关闭所有页面
@@ -72,6 +72,11 @@ class WelcomeController extends GetxController {
   @override
   void onReady() {
     super.onReady();
+
+     // 设置已打开
+    ConfigService().setAlreadyOpen();
+
+    // 初始化数据
     _initData();
   }
 
