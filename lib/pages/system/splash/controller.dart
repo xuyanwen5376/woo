@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../common/index.dart';
+
 class SplashController extends GetxController {
   SplashController();
 
@@ -7,6 +9,13 @@ class SplashController extends GetxController {
 
   _initData() {
     update(["splash"]);
+  }
+
+  _jumpToPage() {
+    // 欢迎页
+    Future.delayed(const Duration(seconds: 1), () {
+      Get.offAllNamed(RouteNames.systemWelcome);
+    });
   }
 
   void onTap(int ticket) {
@@ -23,6 +32,7 @@ class SplashController extends GetxController {
   void onReady() {
     super.onReady();
     _initData();
+    _jumpToPage();
   }
 
   @override
