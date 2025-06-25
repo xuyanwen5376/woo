@@ -14,6 +14,8 @@ class Global {
     await Future.wait([
       // 配置服务
       Get.putAsync<ConfigService>(() async => await ConfigService().init()),
+      // HTTP 服务
+      Get.putAsync<WPHttpService>(() async => WPHttpService()),
     ]).whenComplete(() {});
   }
 }

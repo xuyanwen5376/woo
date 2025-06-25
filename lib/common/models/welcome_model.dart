@@ -25,4 +25,3 @@ class WelcomeModel {
     return map;
   }
 }
-

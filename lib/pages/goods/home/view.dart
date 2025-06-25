@@ -84,22 +84,62 @@ class HomePage extends GetView<HomeController> {
 
   // 分类导航
   Widget _buildCategories() {
-    return Container().sliverToBoxAdapter().sliverPaddingHorizontal(
-      AppSpace.page,
-    );
+    return <Widget>[
+          for (var i = 0; i < controller.categoryItems.length; i++)
+            CategoryListItemWidget(
+              category: controller.categoryItems[i],
+              onTap: (categoryId) => controller.onCategoryTap(categoryId),
+            ).paddingRight(AppSpace.listItem),
+        ]
+        .toListView(scrollDirection: Axis.horizontal)
+        .height(90.w)
+        .paddingVertical(AppSpace.listRow)
+        .sliverToBoxAdapter()
+        .sliverPaddingHorizontal(AppSpace.page);
   }
 
   // Flash Sell
   Widget _buildFlashSell() {
-    return Container().sliverToBoxAdapter().sliverPaddingHorizontal(
-      AppSpace.page,
-    );
+    return <Widget>[
+          for (var i = 0; i < controller.flashShellProductList.length; i++)
+            ProductItemWidget(
+                  controller.flashShellProductList[i],
+                  imgHeight: 117.w,
+                  imgWidth: 120.w,
+                )
+                .constrained(width: 120.w, height: 170.w)
+                .paddingRight(AppSpace.listItem),
+        ]
+        .toListView(scrollDirection: Axis.horizontal)
+        .height(170.w)
+        .paddingBottom(AppSpace.listRow)
+        .sliverToBoxAdapter()
+        .sliverPaddingHorizontal(AppSpace.page);
   }
 
-  // New Sell
+  // 新商品
   Widget _buildNewSell() {
-    return Container().sliverToBoxAdapter().sliverPaddingHorizontal(
-      AppSpace.page,
+    return GetBuilder<HomeController>(
+      id: "home_news_sell",
+      builder: (_) {
+        return SliverGrid(
+              delegate: SliverChildBuilderDelegate((
+                BuildContext context,
+                int position,
+              ) {
+                var product = controller.newProductProductList[position];
+                return ProductItemWidget(product, imgHeight: 170.w);
+              }, childCount: controller.newProductProductList.length),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: AppSpace.listRow,
+                crossAxisSpacing: AppSpace.listItem,
+                childAspectRatio: 0.8,
+              ),
+            )
+            .sliverPadding(bottom: AppSpace.page)
+            .sliverPaddingHorizontal(AppSpace.page);
+      },
     );
   }
 
@@ -119,14 +159,31 @@ class HomePage extends GetView<HomeController> {
           LocaleKeys.gHomeFlashSell.tr,
         ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page),
 
+        // 栏位标题
+        controller.flashShellProductList.isNotEmpty
+            ? BuildListTitle(
+              title: LocaleKeys.gHomeFlashSell.tr,
+              subTitle: "03. 30. 30",
+              onTap: () => controller.onAllTap(true),
+            ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page)
+            : const SliverToBoxAdapter(),
+
         // list
         _buildFlashSell(),
 
         // new product
         // title
-        Text(
-          LocaleKeys.gHomeNewProduct.tr,
-        ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page),
+        // 栏位标题
+        controller.flashShellProductList.isNotEmpty
+            ? BuildListTitle(
+              title: LocaleKeys.gHomeNewProduct.tr,
+              subTitle: "03. 30. 30",
+              onTap: () => controller.onAllTap(true),
+            ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page)
+            : const SliverToBoxAdapter(),
+        // Text(
+        //   LocaleKeys.gHomeNewProduct.tr,
+        // ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page),
 
         // list
         _buildNewSell(),
