@@ -1,6 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../../../common/index.dart';
 import 'index.dart';
@@ -199,7 +200,15 @@ class HomePage extends GetView<HomeController> {
       builder: (_) {
         return Scaffold(
           appBar: _buildAppBar(context),
-          body: SafeArea(child: _buildView()),
+          body: 
+          SmartRefresher(
+            controller: controller.refreshController, // 刷新控制器
+            enablePullUp: true, // 启用上拉加载
+            onRefresh: controller.onRefresh, // 下拉刷新回调
+            onLoading: controller.onLoading, // 上拉加载回调
+            // footer: const SmartRefresherFooterWidget(), // 底部加载更多
+            child: _buildView(),
+          ), 
         );
       },
     );
