@@ -6,4 +6,5 @@ export 'slider_indicator.dart';
 export 'navigation.dart';
 export 'carousel.dart';
 export 'category_item.dart';
-export 'product_item.dart'; 
+export 'product_item.dart';
+export 'placehold.dart';
