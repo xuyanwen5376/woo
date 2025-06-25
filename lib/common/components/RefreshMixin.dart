@@ -35,7 +35,7 @@ mixin RefreshMixin<T extends GetxController> on GetxController {
         hasMore = true; 
       }
       refreshController.refreshCompleted();
-    } catch (e, s) { 
+    } catch (e) { 
       refreshController.refreshFailed();
     }
   }

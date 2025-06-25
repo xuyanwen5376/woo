@@ -55,7 +55,10 @@ class HomeController extends GetxController with RefreshMixin {
   void onNewProductTap(int productId) {}
 
   // ALL 点击事件
-  void onAllTap(bool featured) {}
+  void onAllTap(bool featured) {
+    print(featured);
+    Get.toNamed(RouteNames.goodsProductList, arguments: {"featured": featured});
+  }
 
   // 导航点击事件
   void onAppBarTap() {}
