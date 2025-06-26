@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../../common/index.dart';
 import 'index.dart';
+import 'widgets/index.dart';
 
 class ProductDetailsPage extends GetView<ProductDetailsController> {
   const ProductDetailsPage({super.key});
@@ -40,13 +41,9 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
   Widget _buildTitle(BuildContext context) {
     return <Widget>[
       <Widget>[
-        TextWidget.h3(controller.product?.price ?? ""),
-        TextWidget.label(
-          controller.product?.name ?? "-",
-        ),
-      ].toColumn(
-        crossAxisAlignment: CrossAxisAlignment.start,
-      ).expanded(),
+        TextWidget.h2("￥" + (controller.product?.price ?? "0")),
+        TextWidget.label(controller.product?.name ?? "-"),
+      ].toColumn(crossAxisAlignment: CrossAxisAlignment.start).expanded(),
       IconWidget(
         type: IconWidgetType.icon,
         iconData: Icons.star,
@@ -65,13 +62,41 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
   }
 
   // Tab 栏位
-  Widget _buildTabBar() {
-    return Container(child: Text("Tab 栏位"));
+  Widget _buildTabBar(BuildContext context) {
+    return GetBuilder<ProductDetailsController>(
+      // tag: tag,
+      id: "product_tab",
+      builder: (_) {
+        return <Widget>[
+          _buildTabBarItem(context, LocaleKeys.gDetailTabProduct.tr, 0),
+          _buildTabBarItem(context, LocaleKeys.gDetailTabDetails.tr, 1),
+          _buildTabBarItem(context, LocaleKeys.gDetailTabReviews.tr, 2),
+        ].toRowSpace(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.center,
+        );
+      },
+    );
   }
 
   // TabView 视图
   Widget _buildTabView() {
-    return Container(child: Text("TabView 视图"));
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(20.w, 0.w, 20.w, 0.w),
+        child: TabBarView(
+          controller: controller.tabController,
+          children: [
+            // 规格
+            TabProductView(),
+            // 详情
+            TabDetailView(),
+            // 评论
+            TabReviewsView(),
+          ],
+        ),
+      ),
+    );
   }
 
   // 主视图
@@ -86,7 +111,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
           _buildTitle(context),
 
           // Tab 栏位
-          _buildTabBar(),
+          _buildTabBar(context),
 
           // TabView 视图
           _buildTabView(),
@@ -107,5 +132,23 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
         );
       },
     );
+  }
+
+  // Tab 栏位按钮
+  Widget _buildTabBarItem(BuildContext context, String textString, int index) {
+    return ButtonWidget.outline(
+      textString,
+      onTap: () => controller.onTapBarTap(index),
+      borderRadius: 17,
+      borderColor: Colors.transparent,
+      textColor:
+          controller.tabIndex == index
+              ? context.colors.scheme.onSecondary
+              : context.colors.scheme.onPrimaryContainer,
+      backgroundColor:
+          controller.tabIndex == index
+              ? context.colors.scheme.primary
+              : context.colors.scheme.onPrimary,
+    ).tight(width: 100.w, height: 35.h);
   }
 }
