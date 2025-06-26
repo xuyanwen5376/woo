@@ -43,7 +43,17 @@ class ProductDetailsController extends GetxController
     // 读取缓存
     await _loadCache();
 
+    // 监听 tab 切换
+    addListenerTab();
+
     update(["product_details"]);
+  }
+
+  void addListenerTab() {
+    tabController.addListener(() {
+      tabIndex = tabController.index; 
+      update(['product_tab']);
+    });
   }
 
   void onChangeBanner(int index, _reason) {
@@ -70,7 +80,7 @@ class ProductDetailsController extends GetxController
 
   void onTap() {}
   // 颜色选中
-  void onColorTap(List<String> keys) { 
+  void onColorTap(List<String> keys) {
     colorKeys = keys;
     update(["product_colors"]);
   }
@@ -129,12 +139,15 @@ class ProductDetailsController extends GetxController
       Constants.storageProductsAttributesSizes,
     );
 
-    sizes = stringSizes != ""
-        ? jsonDecode(stringSizes).map<KeyValueModel<AttributeModel>>((item) { 
-            var arrt = AttributeModel.fromJson(item);
-            return KeyValueModel(key: "${arrt.name}", value: arrt);
-          }).toList()
-        : [];
+    sizes =
+        stringSizes != ""
+            ? jsonDecode(stringSizes).map<KeyValueModel<AttributeModel>>((
+              item,
+            ) {
+              var arrt = AttributeModel.fromJson(item);
+              return KeyValueModel(key: "${arrt.name}", value: arrt);
+            }).toList()
+            : [];
   }
 
   @override
