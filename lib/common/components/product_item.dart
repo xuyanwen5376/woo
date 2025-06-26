@@ -27,35 +27,56 @@ class ProductItemWidget extends StatelessWidget {
   });
 
   Widget _buildView(BuildContext context, BoxConstraints constraints) {
-    var ws = <Widget>[
-      // 图片
-      if (product.images?.isNotEmpty == true)
+    var ws = <Widget>[];
+
+    // 图片
+    if (product.images?.isNotEmpty == true) {
+      ws.add(
         ImageWidget.img(
           product.images?.first.src ?? "",
           fit: BoxFit.cover,
           width: imgWidth ?? constraints.minWidth,
           height: imgHeight,
         ),
+      );
+    } else {
+      // 如果没有图片，添加一个占位容器
+      ws.add(
+        Container(
+          width: imgWidth ?? constraints.minWidth,
+          height: imgHeight ?? 120.w,
+          color: context.colors.scheme.surfaceContainer,
+          child:
+              Icon(
+                Icons.image_not_supported,
+                color: context.colors.scheme.outline,
+                size: 32,
+              ).center(),
+        ),
+      );
+    }
 
-      // 描述
+    // 描述
+    ws.add(
       <Widget>[
-        // 标题
-        TextWidget.label(product.name ?? "", overflow: TextOverflow.ellipsis),
+            // 标题
+            TextWidget.label(
+              product.name ?? "",
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
 
-        // 价格
-        if (product.price != null)
-          TextWidget.label(
-            product.price ?? "",
-            weight: FontWeight.bold,
-          ),
-      ]
+            // 价格
+            if (product.price != null)
+              TextWidget.label(product.price ?? "", weight: FontWeight.bold),
+          ]
           .toColumn(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
           )
           .paddingHorizontal(5)
           .expanded(),
-    ];
+    );
 
     return ws
         .toColumn(
@@ -66,17 +87,15 @@ class ProductItemWidget extends StatelessWidget {
         .elevation(0.1)
         .paddingAll(2)
         .onTap(() {
-      if (onTap != null) {
-        onTap?.call();
-      } else {
-        Get.toNamed(
-          RouteNames.goodsProductDetails,
-          arguments: {
-            "id": product.id,
-          },
-        );
-      }
-    });
+          if (onTap != null) {
+            onTap?.call();
+          } else {
+            Get.toNamed(
+              RouteNames.goodsProductDetails,
+              arguments: {"id": product.id},
+            );
+          }
+        });
   }
 
   @override

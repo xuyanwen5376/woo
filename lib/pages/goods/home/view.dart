@@ -48,7 +48,7 @@ class HomePage extends GetView<HomeController> {
             borderRadius: BorderRadius.circular(AppRadius.input),
             border: Border.all(color: context.colors.scheme.outline, width: 1),
           )
-          .tight(height: 40.h, width: double.infinity)
+          .tight(height: 40.h)
           .paddingLeft(10)
           .onTap(controller.onAppBarTap),
       // 右侧的按钮区
@@ -146,55 +146,47 @@ class HomePage extends GetView<HomeController> {
 
   // 主视图
   Widget _buildView() {
-    return controller.flashShellProductList.isEmpty ||
-            controller.newProductProductList.isEmpty
-        ?
-        // 占位图
-        const PlaceholdWidget()
-        : CustomScrollView(
-          slivers: [
-            // 轮播广告
-            _buildBanner(),
+    return CustomScrollView(
+      slivers: [
+        // 轮播广告
+        _buildBanner(),
 
-            // 分类导航
-            _buildCategories(),
+        // 分类导航
+        _buildCategories(),
 
-            // Flash Sell
-            // title
-            Text(
-              LocaleKeys.gHomeFlashSell.tr,
-            ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page),
+        // Flash Sell
+        // title
+        Text(
+          LocaleKeys.gHomeFlashSell.tr,
+        ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page),
 
-            // 栏位标题
-            controller.flashShellProductList.isNotEmpty
-                ? BuildListTitle(
-                  title: LocaleKeys.gHomeFlashSell.tr,
-                  subTitle: "03. 30. 30",
-                  onTap: () => controller.onAllTap(true),
-                ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page)
-                : const SliverToBoxAdapter(),
+        // 栏位标题
+        controller.flashShellProductList.isNotEmpty
+            ? BuildListTitle(
+              title: LocaleKeys.gHomeFlashSell.tr,
+              subTitle: "03. 30. 30",
+              onTap: () => controller.onAllTap(true),
+            ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page)
+            : const SliverToBoxAdapter(),
 
-            // list
-            _buildFlashSell(),
+        // list
+        _buildFlashSell(),
 
-            // new product
-            // title
-            // 栏位标题
-            controller.flashShellProductList.isNotEmpty
-                ? BuildListTitle(
-                  title: LocaleKeys.gHomeNewProduct.tr,
-                  subTitle: "03. 30. 30",
-                  onTap: () => controller.onAllTap(true),
-                ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page)
-                : const SliverToBoxAdapter(),
-            // Text(
-            //   LocaleKeys.gHomeNewProduct.tr,
-            // ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page),
+        // new product
+        // title
+        // 栏位标题
+        controller.newProductProductList.isNotEmpty
+            ? BuildListTitle(
+              title: LocaleKeys.gHomeNewProduct.tr,
+              subTitle: "03. 30. 30",
+              onTap: () => controller.onAllTap(false),
+            ).sliverToBoxAdapter().sliverPaddingHorizontal(AppSpace.page)
+            : const SliverToBoxAdapter(),
 
-            // list
-            _buildNewSell(),
-          ],
-        );
+        // list
+        _buildNewSell(),
+      ],
+    );
   }
 
   @override
