@@ -46,7 +46,9 @@ class HomeController extends GetxController with RefreshMixin {
   }
 
   // 分类点击事件
-  void onCategoryTap(int categoryId) {}
+  void onCategoryTap(int categoryId) {
+    Get.toNamed(RouteNames.goodsCategory, arguments: {"id": categoryId});
+  }
 
   // 推荐商品点击事件
   void onFlashShellTap(int productId) {}
@@ -76,6 +78,9 @@ class HomeController extends GetxController with RefreshMixin {
     );
     // 新商品
     newProductProductList = await ProductApi.products(ProductsReq());
+
+    // 保存离线数据 - 分类
+    Storage().setJson(Constants.storageProductsCategories, categoryItems);
 
     update(["home"]);
   }
