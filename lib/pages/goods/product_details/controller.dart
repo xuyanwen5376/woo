@@ -33,12 +33,18 @@ class ProductDetailsController extends GetxController
   // 选中尺寸列表
   List<String> sizeKeys = [];
 
+  // reviews 评论列表
+  List<ReviewModel> reviews = [];
+
   _initData() async {
     // 初始化 tab 控制器
     tabController = TabController(length: 3, vsync: this);
 
     // 商品详情
     await _loadProduct();
+
+    // reviews 评论列表
+    await _loadReviews();
 
     // 读取缓存
     await _loadCache();
@@ -51,7 +57,7 @@ class ProductDetailsController extends GetxController
 
   void addListenerTab() {
     tabController.addListener(() {
-      tabIndex = tabController.index; 
+      tabIndex = tabController.index;
       update(['product_tab']);
     });
   }
@@ -115,6 +121,11 @@ class ProductDetailsController extends GetxController
               )
               .toList();
     }
+  }
+
+  // reviews 评论列表
+  _loadReviews() async {
+    reviews = await ProductApi.reviews(ReviewsReq(product: productId));
   }
 
   // 读取缓存

@@ -1,6 +1,9 @@
+import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_woo_course_2025/common/components/review_item.dart';
 import 'package:get/get.dart';
 
+import '../../../../common/index.dart';
 import '../index.dart';
 
 /// 评论
@@ -9,6 +12,15 @@ class TabReviewsView extends GetView<ProductDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("232323");
+    return ListView.separated(
+      itemBuilder: (BuildContext context, int index) {
+        var item = controller.reviews[index];
+        return ReViewItemWidget(item);
+      },
+      separatorBuilder: (BuildContext context, int index) {
+        return SizedBox(height: AppSpace.listRow * 2);
+      },
+      itemCount: controller.reviews.length,
+    ).paddingVertical(AppSpace.page);
   }
 }

@@ -128,7 +128,13 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
           appBar: mainAppBarWidget(
             titleString: controller.product?.name ?? LocaleKeys.gDetailTitle.tr,
           ),
-          body: SafeArea(child: _buildView(context)),
+          body: SafeArea(
+            child:
+                <Widget>[
+                  _buildView(context).expanded(),
+                  _buildButtons(context),
+                ].toColumn(),
+          ),
         );
       },
     );
@@ -150,5 +156,24 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
               ? context.colors.scheme.primary
               : context.colors.scheme.onPrimary,
     ).tight(width: 100.w, height: 35.h);
+  }
+
+  // 底部按钮
+  Widget _buildButtons(BuildContext context) {
+    return <Widget>[
+          // 加入购物车
+          ButtonWidget.outline(LocaleKeys.gDetailBtnAddCart.tr).expanded(),
+
+          // 间距
+          SizedBox(width: AppSpace.iconTextLarge),
+
+          // 立刻购买
+          ButtonWidget.primary(LocaleKeys.gDetailBtnBuy.tr).expanded(),
+        ]
+        .toRow(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+        )
+        .paddingHorizontal(AppSpace.page);
   }
 }
