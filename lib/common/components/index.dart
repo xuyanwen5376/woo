@@ -10,3 +10,4 @@ export 'product_item.dart';
 export 'placehold.dart';      
 export 'appbar.dart'; 
 export 'gallery.dart';
+export 'colors_list.dart';

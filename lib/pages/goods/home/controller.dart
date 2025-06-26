@@ -19,6 +19,12 @@ class HomeController extends GetxController with RefreshMixin {
   // 最新商品列表数据
   List<ProductModel> newProductProductList = [];
 
+  // 颜色
+  List<AttributeModel> attributeColors = [];
+
+  // 尺寸
+  List<AttributeModel> attributeSizes = [];
+
   @override
   Future<List<ProductModel>> loadPageData({
     required int page,
@@ -81,6 +87,23 @@ class HomeController extends GetxController with RefreshMixin {
 
     // 保存离线数据 - 分类
     Storage().setJson(Constants.storageProductsCategories, categoryItems);
+
+    // 颜色
+    attributeColors = await ProductApi.attributes(1);
+
+    // 尺寸
+    attributeSizes = await ProductApi.attributes(2);
+
+    // 保存离线数据
+    // 基础
+    Storage().setJson(
+      Constants.storageProductsAttributesColors,
+      attributeColors,
+    );
+    Storage().setJson(
+      Constants.storageProductsAttributesSizes,
+      attributeSizes,
+    );
 
     update(["home"]);
   }

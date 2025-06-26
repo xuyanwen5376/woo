@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,21 +23,20 @@ class ProductDetailsController extends GetxController
   // tab 控制器
   int tabIndex = 0;
 
+  // 颜色列表
+  List<KeyValueModel<AttributeModel>> colors = [];
+  // 选中颜色列表
+  List<String> colorKeys = [];
+
   _initData() async {
-    product = await ProductApi.productDetail(productId.toString());
-
-    // Banner 数据
-    if (product?.images != null) {
-      bannerItems =
-          product!.images!
-              .map<KeyValueModel>(
-                (e) => KeyValueModel(key: "${e.id}", value: e.src ?? ""),
-              )
-              .toList();
-    }
-
     // 初始化 tab 控制器
     tabController = TabController(length: 3, vsync: this);
+
+    // 商品详情
+    await _loadProduct();
+
+    // 读取缓存
+    await _loadCache();
 
     update(["product_details"]);
   }
@@ -63,17 +64,58 @@ class ProductDetailsController extends GetxController
   }
 
   void onTap() {}
+  // 颜色选中
+  void onColorTap(List<String> keys) {
+    print('--------------------------------');
+    print('onColorTap' + keys.toString());
+    print('--------------------------------');
+
+    colorKeys = keys;
+    update(["product_colors"]);
+  }
 
   @override
   void onInit() {
     super.onInit();
-    
   }
 
   @override
   void onReady() {
     super.onReady();
     _initData();
+  }
+
+  // 商品详情
+  _loadProduct() async {
+    product = await ProductApi.productDetail(productId.toString());
+
+    // Banner 数据
+    if (product?.images != null) {
+      bannerItems =
+          product!.images!
+              .map<KeyValueModel>(
+                (e) => KeyValueModel(key: "${e.id}", value: e.src ?? ""),
+              )
+              .toList();
+    }
+  }
+
+  // 读取缓存
+  _loadCache() async {
+    // 颜色列表
+    var stringColors = Storage().getString(
+      Constants.storageProductsAttributesColors,
+    );
+
+    colors =
+        stringColors != ""
+            ? jsonDecode(stringColors).map<KeyValueModel<AttributeModel>>((
+              item,
+            ) {
+              var arrt = AttributeModel.fromJson(item);
+              return KeyValueModel(key: "${arrt.name}", value: arrt);
+            }).toList()
+            : [];
   }
 
   @override

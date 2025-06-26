@@ -4,9 +4,7 @@ import '../index.dart';
 class ProductApi {
   /// 分类列表
   static Future<List<CategoryModel>> categories() async {
-    var res = await WPHttpService.to.get(
-      '/products/categories',
-    );
+    var res = await WPHttpService.to.get('/products/categories');
 
     List<CategoryModel> categories = [];
     for (var item in res.data) {
@@ -19,10 +17,7 @@ class ProductApi {
 
   /// 商品列表
   static Future<List<ProductModel>> products(ProductsReq? req) async {
-    var res = await WPHttpService.to.get(
-      '/products',
-      params: req?.toJson(),
-    );
+    var res = await WPHttpService.to.get('/products', params: req?.toJson());
 
     List<ProductModel> products = [];
     for (var item in res.data) {
@@ -33,9 +28,21 @@ class ProductApi {
 
   /// 商品详情
   static Future<ProductModel> productDetail(String id) async {
-    var res = await WPHttpService.to.get(
-      '/products/$id',
-    );
+    var res = await WPHttpService.to.get('/products/$id');
     return ProductModel.fromJson(res.data);
+  }
+
+  /// 属性列表
+  /// id 1 颜色 2 尺寸
+  static Future<List<AttributeModel>> attributes(int id) async {
+    var res = await WPHttpService.to.get('/products/attributes/$id/terms');
+
+    List<AttributeModel> attributes = [];
+    for (var item in res.data) {
+      attributes.add(AttributeModel.fromJson(item));
+    }
+    // 排序 menuOrder , 小号在前
+    attributes.sort((a, b) => a.menuOrder!.compareTo(b.menuOrder as int));
+    return attributes;
   }
 }
