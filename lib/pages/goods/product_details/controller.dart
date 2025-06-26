@@ -28,6 +28,11 @@ class ProductDetailsController extends GetxController
   // 选中颜色列表
   List<String> colorKeys = [];
 
+  // 尺寸列表
+  List<KeyValueModel<AttributeModel>> sizes = [];
+  // 选中尺寸列表
+  List<String> sizeKeys = [];
+
   _initData() async {
     // 初始化 tab 控制器
     tabController = TabController(length: 3, vsync: this);
@@ -65,13 +70,15 @@ class ProductDetailsController extends GetxController
 
   void onTap() {}
   // 颜色选中
-  void onColorTap(List<String> keys) {
-    print('--------------------------------');
-    print('onColorTap' + keys.toString());
-    print('--------------------------------');
-
+  void onColorTap(List<String> keys) { 
     colorKeys = keys;
     update(["product_colors"]);
+  }
+
+  // 尺寸选中
+  void onSizeTap(List<String> keys) {
+    sizeKeys = keys;
+    update(["product_sizes"]);
   }
 
   @override
@@ -116,6 +123,18 @@ class ProductDetailsController extends GetxController
               return KeyValueModel(key: "${arrt.name}", value: arrt);
             }).toList()
             : [];
+
+    // 尺寸列表
+    var stringSizes = Storage().getString(
+      Constants.storageProductsAttributesSizes,
+    );
+
+    sizes = stringSizes != ""
+        ? jsonDecode(stringSizes).map<KeyValueModel<AttributeModel>>((item) { 
+            var arrt = AttributeModel.fromJson(item);
+            return KeyValueModel(key: "${arrt.name}", value: arrt);
+          }).toList()
+        : [];
   }
 
   @override

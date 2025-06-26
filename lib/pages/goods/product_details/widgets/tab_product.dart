@@ -21,16 +21,29 @@ class TabProductView extends GetView<ProductDetailsController> {
   Widget build(BuildContext context) {
     return <Widget>[
           // 颜色
-          _buildTitle("Color22222"),
+          _buildTitle("Color"),
           GetBuilder<ProductDetailsController>(
             id: "product_colors",
             // tag: uniqueTag,
             builder: (_) {
-              return ColorsListWidget(
+              return TagsListWidget(
                 itemList: controller.colors,
                 keys: controller.colorKeys,
                 size: 33.w,
                 onTap: controller.onColorTap,
+              ).paddingBottom(AppSpace.listRow * 2);
+            },
+          ),
+          _buildTitle("Size"),
+          GetBuilder<ProductDetailsController>(
+            id: "product_sizes",
+            // tag: uniqueTag,
+            builder: (_) {
+              return TagsListWidget(
+                itemList: controller.sizes,
+                keys: controller.sizeKeys,
+                size: 33.w,
+                onTap: controller.onSizeTap,
               ).paddingBottom(AppSpace.listRow * 2);
             },
           ),
