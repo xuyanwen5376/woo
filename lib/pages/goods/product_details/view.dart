@@ -37,8 +37,31 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
   }
 
   // 商品标题
-  Widget _buildTitle() {
-    return Container(child: Text("商品标题"));
+  Widget _buildTitle(BuildContext context) {
+    return <Widget>[
+      <Widget>[
+        TextWidget.h3(controller.product?.price ?? ""),
+        TextWidget.label(
+          controller.product?.name ?? "-",
+        ),
+      ].toColumn(
+        crossAxisAlignment: CrossAxisAlignment.start,
+      ).expanded(),
+      IconWidget(
+        type: IconWidgetType.icon,
+        iconData: Icons.star,
+        text: "4.5",
+        size: 20,
+        color: context.colors.scheme.primary,
+      ).paddingRight(AppSpace.iconTextMedium),
+      IconWidget(
+        type: IconWidgetType.icon,
+        iconData: Icons.favorite,
+        text: "100+",
+        size: 20,
+        color: context.colors.scheme.primary,
+      ).paddingRight(AppSpace.iconTextMedium),
+    ].toRow().paddingAll(AppSpace.page);
   }
 
   // Tab 栏位
@@ -60,7 +83,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
           _buildBanner(context),
 
           // 商品标题
-          _buildTitle(),
+          _buildTitle(context),
 
           // Tab 栏位
           _buildTabBar(),
