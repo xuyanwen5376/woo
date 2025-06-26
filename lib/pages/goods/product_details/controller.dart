@@ -35,7 +35,15 @@ class ProductDetailsController extends GetxController {
     update(["banner"]);
   }
  
+  // 图片浏览
+  void onGalleryTap(int index, KeyValueModel item) {
+    Get.to(GalleryWidget(
+      initialIndex: index,
+      items: bannerItems.map<String>((e) => e.value!).toList(),
+    ));
+  }
 
+  
   void onTap() {}
 
   // @override

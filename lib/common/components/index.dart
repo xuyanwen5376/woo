@@ -8,4 +8,5 @@ export 'carousel.dart';
 export 'category_item.dart';
 export 'product_item.dart';
 export 'placehold.dart';      
-export 'appbar.dart';
+export 'appbar.dart'; 
+export 'gallery.dart';
