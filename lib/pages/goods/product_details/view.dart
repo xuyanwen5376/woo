@@ -129,6 +129,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
             titleString: controller.product?.name ?? LocaleKeys.gDetailTitle.tr,
           ),
           body: SafeArea(
+            // child: _buildView(context),
             child:
                 <Widget>[
                   _buildView(context).expanded(),

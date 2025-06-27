@@ -80,6 +80,14 @@ class ConfigService extends GetxService {
         break;
     }
   }
+  // 切换主题
+  void switchThemeMode() { 
+    themeMode = themeMode == AdaptiveThemeMode.light
+        ? AdaptiveThemeMode.dark
+        : AdaptiveThemeMode.light;
+
+    setThemeMode(themeMode.name);
+  }
 
 
     // 是否首次打开

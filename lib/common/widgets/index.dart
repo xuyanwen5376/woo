@@ -5,3 +5,5 @@ export 'image.dart';
 export 'icon.dart';
 export 'button.dart';
 export 'input.dart';
+export 'bar_item.dart';
+export 'list_tile.dart';
