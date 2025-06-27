@@ -16,6 +16,9 @@ class Global {
       Get.putAsync<ConfigService>(() async => await ConfigService().init()),
       // HTTP 服务
       Get.putAsync<WPHttpService>(() async => WPHttpService()),
+      // 用户服务
+      Get.putAsync<UserService>(() async => UserService()),
+      // 用户 API
     ]).whenComplete(() {});
   }
 }

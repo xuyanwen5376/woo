@@ -1,6 +1,7 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_picker_plus/flutter_picker_plus.dart';
 
 import '../../../common/index.dart';
 
@@ -10,7 +11,7 @@ class MyAddressController extends GetxController {
   // 地址类型 Billing 订单发票地址，Shipping 订单收货地址
   final String type = Get.arguments['type'] ?? "";
 
-    // 表单 form
+  // 表单 form
   GlobalKey formKey = GlobalKey<FormState>();
   // 输入框控制器
   TextEditingController firstNameController = TextEditingController();
@@ -25,6 +26,16 @@ class MyAddressController extends GetxController {
   TextEditingController countryController = TextEditingController();
   TextEditingController statesController = TextEditingController();
 
+  // 大陆国家洲省
+  List<ContinentsModel> continents = [];
+  // 大陆国家数据
+  List<PickerItem> countriesList = [];
+  // 国家选择
+  List<int> countrySels = [];
+  // 洲省数据
+  List<PickerItem> statesList = [];
+  // 洲省市选择
+  List<int> statesSels = [];
 
   // 初始化
   Future<void> _initData() async {
@@ -54,10 +65,103 @@ class MyAddressController extends GetxController {
       statesController.text = profile.shipping?.state ?? "";
     }
 
+    // 拉取 大陆国家数据
+    await _fetchContinents();
+    // 国家代码
+    String countryCode = countryController.text;
+
+    // 国家选着器 - 选中 index
+    for (var i = 0; i < continents.length; i++) {
+      // 大陆
+      var continent = continents[i];
+      // 检查是否有选中的国家
+      int iCountryIndex =
+          continent.countries?.indexWhere((el) => el.code == countryCode) ?? 0;
+      if (iCountryIndex > 0) {
+        [i, iCountryIndex];
+        break;
+      }
+    }
+
+    // 洲省代码
+    String statesCode = statesController.text;
+    // 洲选择器数据
+    _filterStates(countryCode);
+    // 洲省选择器 - 选中 index
+    statesSels = [statesList.indexWhere((el) => el.value == statesCode)];
+
     update(["my_address"]);
   }
+
+  // 国家选择
+  void onCountryPicker() async {
+    BottomSheetWidget.show(
+      context: Get.context!,
+      titleString: "国家",
+      padding: 20,
+      content:
+          Picker(
+            adapter: PickerDataAdapter(data: countriesList),
+            selecteds: countrySels,
+            itemExtent: 40,
+            height: 270,
+            backgroundColor: Colors.transparent,
+            containerColor: Colors.transparent,
+            cancelText: LocaleKeys.commonBottomCancel.tr,
+            confirmText: LocaleKeys.commonBottomConfirm.tr,
+            onConfirm: (Picker picker, List<int> value) {
+              countrySels = value;
+              final selectedValues = picker.getSelectedValues();
+              if (selectedValues.isNotEmpty) {
+                final selectedCountry = selectedValues.last as String;
+                countryController.text = selectedCountry;
+                _filterStates(selectedCountry); // 加入筛选 洲省
+                update(["my_address"]);
+              }
+            },
+          ).makePicker(),
+    );
+  }
+
+  // 洲省市选择
+  void onStatesPicker() async {
+    BottomSheetWidget.show(
+      context: Get.context!,
+      titleString: "州/省",
+      padding: 20,
+      content:
+          Picker(
+            adapter: PickerDataAdapter(data: statesList),
+            selecteds: statesSels,
+            itemExtent: 40,
+            height: 270,
+            backgroundColor: Colors.transparent,
+            containerColor: Colors.transparent,
+            cancelText: LocaleKeys.commonBottomCancel.tr,
+            confirmText: LocaleKeys.commonBottomConfirm.tr,
+            onConfirm: (Picker picker, List<int> value) {
+              statesSels = value;
+              final selectedValues = picker.getSelectedValues();
+              if (selectedValues.isNotEmpty) {
+                final selectedState = selectedValues.last as String;
+                statesController.text = selectedState;
+                update(["my_address"]);
+              }
+            },
+          ).makePicker(),
+    );
+  }
+
   // 保存
   Future<void> onSave() async {
+    // 检查是否登录
+    if (!UserService.to.isLogin) {
+      Get.snackbar("提示", "请先登录", snackPosition: SnackPosition.TOP);
+      // 跳转到登录页面
+      Get.toNamed(RouteNames.systemLogin);
+      return;
+    }
+
     if ((formKey.currentState as FormState).validate()) {
       UserProfileModel? profile;
       if (type == "Billing") {
@@ -96,28 +200,7 @@ class MyAddressController extends GetxController {
         Get.back<bool>(result: true);
       }
     }
-  }
-  
-  // 国家选择
-  void onCountryPicker() async {
-    BottomSheetWidget.show(
-      context: Get.context!,
-      titleString: "国家",
-      padding: 20,
-      content: const Text("国家 content").height(200),
-    );
-  }
-
-  // 洲省市选择
-  void onStatesPicker() async {
-    BottomSheetWidget.show(
-      context: Get.context!,
-      titleString: "州/省",
-      padding: 20,
-      content: const Text("州/省 content").height(200),
-    );
-  }
-
+  } 
 
   void onTap() {}
 
@@ -131,6 +214,48 @@ class MyAddressController extends GetxController {
     super.onReady();
     _initData();
   }
+
+  // 拉取大陆国家洲省数据
+  Future<void> _fetchContinents() async {
+    continents = await UserApi.continents();
+    countriesList = List.generate(continents.length, (index) {
+      var entity = continents[index];
+      List<PickerItem> countryList = [];
+      for (Country country in entity.countries ?? []) {
+        countryList.add(
+          PickerItem(
+            text: Text(country.name ?? "-"),
+            value: country.code ?? "-",
+          ),
+        );
+      }
+      return PickerItem(
+        text: Text(entity.code ?? "-"),
+        value: entity.name ?? "-",
+        children: countryList,
+      );
+    });
+  }
+
+  // 取洲省数据
+  void _filterStates(String countryCode) {
+    for (var continent in continents) {
+      var country = continent.countries?.firstWhereOrNull(
+        (el) => el.code == countryCode,
+      );
+      if (country != null) {
+        statesList = List.generate(country.states?.length ?? 0, (index) {
+          var state = country.states?.elementAt(index);
+          return PickerItem(
+            text: Text(state?.name ?? "-"),
+            value: state?.code ?? "-",
+          );
+        });
+        break;
+      }
+    }
+  }
+
   @override
   void onClose() {
     super.onClose();
@@ -147,5 +272,4 @@ class MyAddressController extends GetxController {
     countryController.dispose();
     statesController.dispose();
   }
-
 }
