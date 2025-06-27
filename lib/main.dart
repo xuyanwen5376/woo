@@ -3,6 +3,7 @@ import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'common/index.dart';
 import 'global.dart';
@@ -51,6 +52,19 @@ class MyApp extends StatelessWidget {
                     getPages: RoutePages.list,
                     navigatorObservers: [RoutePages.observer],
                     // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+                    builder: (context, widget) {
+                      widget = EasyLoading.init()(
+                        context,
+                        widget,
+                      ); // EasyLoading 初始化
+                      // 不随系统字体缩放比例
+                      return MediaQuery(
+                        data: MediaQuery.of(
+                          context,
+                        ).copyWith(textScaler: const TextScaler.linear(1.0)),
+                        child: widget,
+                      );
+                    },
                   ),
                 ),
           ),

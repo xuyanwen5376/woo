@@ -10,6 +10,8 @@ class Global {
     // 工具类
     await Storage().init();
 
+    Loading();
+
     // 初始化队列
     await Future.wait([
       // 配置服务
