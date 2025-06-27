@@ -105,6 +105,10 @@ class RequestInterceptors extends Interceptor {
     if (UserService.to.hasToken) {
       options.headers['Authorization'] = 'Bearer ${UserService.to.token}';
     }
+    // 打印请求url
+    print('Url: ${options.baseUrl}${options.path}');
+    // 打印请求参数
+    print('Query: ${options.queryParameters}');
 
     return handler.next(options);
     // 如果你想完成请求并返回一些自定义数据，你可以resolve一个Response对象 `handler.resolve(response)`。
@@ -127,6 +131,7 @@ class RequestInterceptors extends Interceptor {
         true,
       );
     } else {
+      print('返回数据: ${response.data}');
       handler.next(response);
     }
   }

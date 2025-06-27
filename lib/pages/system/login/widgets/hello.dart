@@ -10,7 +10,8 @@ class HelloWidget extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Obx(() => Text(controller.state.title)),
+      child: Text('111'),
+      // child: Obx(() => Text(controller.state.title)),
     );
   }
 }
