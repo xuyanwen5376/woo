@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -134,14 +133,14 @@ class MyIndexPage extends GetView<MyIndexController> {
       _buildListItem(
         txtTitle: LocaleKeys.myBtnBillingAddress.tr,
         svgPath: AssetsSvgs.pHomeSvg,
-        onTap: () => Get.toNamed(RouteNames.myProfileEdit),
+        onTap: () => controller.onToAddress("Billing"),
       ),
 
       // Billing Address
       _buildListItem(
         txtTitle: LocaleKeys.myBtnShippingAddress.tr,
         svgPath: AssetsSvgs.pHomeSvg,
-        onTap: () => Get.toNamed(RouteNames.myProfileEdit),
+        onTap: () => controller.onToAddress("Shipping"),
       ),
 
       // Language
