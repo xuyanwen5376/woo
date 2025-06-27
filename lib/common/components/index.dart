@@ -12,3 +12,4 @@ export 'appbar.dart';
 export 'gallery.dart';
 export 'colors_list.dart';
 export 'tags_list.dart';
+export 'page_title.dart';
