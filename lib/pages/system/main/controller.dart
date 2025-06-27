@@ -67,8 +67,10 @@ class MainController extends GetxController {
     super.onReady();
     _initData();
 
-    // 跳转注册页
-    Get.toNamed(RouteNames.systemRegister);
+    // 检查是否登录
+    if (!UserService.to.hasToken) {
+      Get.toNamed(RouteNames.systemLogin);
+    }
   }
 
   @override
