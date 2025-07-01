@@ -20,6 +20,8 @@ class Global {
       Get.putAsync<WPHttpService>(() async => WPHttpService()),
       // 用户服务
       Get.putAsync<UserService>(() async => UserService()),
+      // 购物车服务
+      Get.putAsync<CartService>(() async => CartService()),
       // 用户 API
     ]).whenComplete(() {});
   }

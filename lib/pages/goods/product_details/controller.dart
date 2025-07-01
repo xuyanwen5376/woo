@@ -97,6 +97,32 @@ class ProductDetailsController extends GetxController
     update(["product_sizes"]);
   }
 
+  // 加入购物车
+  Future<void> onAddCartTap() async {
+    // print('加入购物车');
+   // 检查是否登录
+    if (!await UserService.to.checkIsLogin()) {
+      return;
+    }
+
+    // 检查空
+    if (product == null || product?.id == null) {
+      Loading.error("product is empty");
+      return;
+    }
+
+    // 加入购物车
+    CartService.to.addCart(LineItem(
+      productId: productId,
+      product: product,
+    ));
+    // 返回、或者去购物车
+    Get.back();
+
+  }
+
+
+
   @override
   void onInit() {
     super.onInit();

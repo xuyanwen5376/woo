@@ -51,9 +51,14 @@ class MainController extends GetxController {
   }
 
 
-  _initData() {
+  /// 初始化数据
+  _initData() async {
+    // 读取用户 profile
+    await UserService.to.getProfile();
+
     update(["main"]);
   }
+
 
   void onTap() {}
 
