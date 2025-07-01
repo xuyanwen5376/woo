@@ -10,3 +10,4 @@ export 'list_tile.dart';
 export 'form/input.dart';
 export 'bottom_sheet.dart';
 export 'checkbox.dart';
+export 'dialog.dart';

@@ -62,4 +62,5 @@ class UserApi {
     );
     return UserProfileModel.fromJson(res.data);
   }
+  
 }
