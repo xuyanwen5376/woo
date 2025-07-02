@@ -31,6 +31,9 @@ class ButtonWidget extends StatefulWidget {
   /// 文字颜色
   final Color? textColor;
 
+  /// 文字粗细
+  final FontWeight? textWeight;
+
   /// 子组件
   final Widget? child;
 
@@ -94,6 +97,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width;
 
   /// raw
@@ -118,6 +122,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width;
 
   /// 主要
@@ -141,6 +146,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width,
        variant = ButtonWidgetVariant.primary;
 
@@ -165,6 +171,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width,
        variant = ButtonWidgetVariant.secondary;
 
@@ -189,6 +196,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width,
        variant = ButtonWidgetVariant.destructive;
 
@@ -213,6 +221,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width,
        variant = ButtonWidgetVariant.outline;
 
@@ -237,6 +246,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width,
        variant = ButtonWidgetVariant.ghost;
 
@@ -261,6 +271,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width,
        variant = ButtonWidgetVariant.link;
 
@@ -285,6 +296,7 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
+    this.textWeight,
   }) : _width = width,
        variant = ButtonWidgetVariant.icon;
 
@@ -454,6 +466,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
           color: _textColor(),
           scale: widget.scale,
           textAlign: TextAlign.center,
+          weight: widget.textWeight,
         ),
       );
     }

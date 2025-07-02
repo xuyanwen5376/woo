@@ -22,6 +22,7 @@ class UserProfileModel {
   Links? links;
   String? imSign;
   String? nickName;
+  String? avatar;
 
   UserProfileModel({
     this.id,
@@ -42,6 +43,7 @@ class UserProfileModel {
     this.links,
     this.imSign,
     this.nickName,
+    this.avatar,
   });
 
   factory UserProfileModel.fromJson(Map<String, dynamic> json) {
@@ -90,6 +92,7 @@ class UserProfileModel {
               : Links.fromJson(json['_links'] as Map<String, dynamic>),
       imSign: imSign,
       nickName: json['nickname'] as String?,
+      avatar: json['avatar'] as String?,
     );
   }
 
@@ -112,5 +115,6 @@ class UserProfileModel {
     '_links': links?.toJson(),
     'im_sign': imSign,
     'nickname': nickName,
+    'avatar': avatar,
   };
 }

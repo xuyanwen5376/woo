@@ -293,6 +293,13 @@ class IMService extends GetxService {
 
     /// 消息发送者
     String? tag = data.groupID ?? data.sender;
+  
+    ChatController? chatController = await chatPageFind(tag!);
+    if (chatController != null) {
+      chatController.onRecvNewMessage(data);
+    }
+
+    return;
 
     /// 程序打开时 APP 内部消息
     /// 否则系统本地消息
@@ -312,7 +319,7 @@ class IMService extends GetxService {
     log('_onRecvMessageModified');
 
     String? tag = data.groupID ?? data.sender;
-    MsgIndexController? chatController = await chatPageFind(tag!);
+    ChatController? chatController = await chatPageFind(tag!);
     if (chatController != null) {
       // chatController.onRecvModifyMessage(data);
     }

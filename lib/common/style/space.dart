@@ -46,4 +46,7 @@ class AppSpace {
   static double get iconTextSmail => 5;
   static double get iconTextMedium => 10;
   static double get iconTextLarge => 15;
+
+  /// 底部视图
+  static double get bottomView => 10;
 }

@@ -128,7 +128,7 @@ Future<void> onReceiveDeleteConversationByCid(String cid) async {
 /// chat 聊天界面
 
 /// 获取聊天 ChatController
-Future<MsgIndexController?> chatPageFind(String tag) async {
+Future<ChatController?> chatPageFind(String tag) async {
   // if (Get.isRegistered<ChatController>(tag: tag)) {
   //   ChatController chatController = Get.find<ChatController>(tag: tag);
   //   return chatController;

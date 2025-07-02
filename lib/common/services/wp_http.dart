@@ -17,7 +17,7 @@ class WPHttpService extends GetxService {
 
     // 初始 dio
     var options = BaseOptions(
-      baseUrl: Constants.wpApiBaseUrl,
+      baseUrl:  Constants.wpApiBaseUrl2,
       connectTimeout: const Duration(seconds: 10), // 10000, // 10秒
       receiveTimeout: const Duration(seconds: 5), // 5000, // 5秒
       headers: {},
@@ -106,9 +106,9 @@ class RequestInterceptors extends Interceptor {
       options.headers['Authorization'] = 'Bearer ${UserService.to.token}';
     }
     // 打印请求url
-    // print('Url: ${options.baseUrl}${options.path}');
+    print('Url: ${options.baseUrl}${options.path}');
     // 打印请求参数
-    // print('Query: ${options.queryParameters}');
+    print('Query: ${options.queryParameters}');
 
     return handler.next(options);
     // 如果你想完成请求并返回一些自定义数据，你可以resolve一个Response对象 `handler.resolve(response)`。

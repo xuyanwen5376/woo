@@ -43,4 +43,5 @@ static const systemUserAgreement = '/system_user_agreement';
 static const systemWelcome = '/system_welcome';
 static const systemMessageIndex = '/system_message_index';
 static const chatChatFindUser = '/chat_chat_find_user';
+static const chatChat = '/chat_chat';
 }

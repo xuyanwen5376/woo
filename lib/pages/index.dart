@@ -42,4 +42,5 @@ export 'system/splash/index.dart';
 export 'system/user_agreement/index.dart';
 export 'system/welcome/index.dart';
 export 'msg/msg_index/index.dart';    
-export 'chat/chat_find_user/index.dart'; 
+export 'chat/chat_find_user/index.dart';
+export 'chat/chat/index.dart';

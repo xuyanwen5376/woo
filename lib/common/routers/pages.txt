@@ -16,6 +16,10 @@
         page: () => const CartIndexPage(),
       ),
       GetPage(
+        name: RouteNames.chatChat,
+        page: () => const ChatPage(),
+      ),
+      GetPage(
         name: RouteNames.chatChatFindUser,
         page: () => const ChatFindUserPage(),
       ),

@@ -40,4 +40,8 @@ class AssetsSvgs {
   static const pTranslateSvg = 'assets/svgs/p-translate.svg';
   static const profileHeaderBackgroundSvg =
       'assets/svgs/profile-header-background.svg';
+  static const keyboardSvg = 'assets/svgs/keyboard.svg';
+  static const voiceSvg = 'assets/svgs/voice.svg';
+  static const stickerSvg = 'assets/svgs/sticker.svg';
+  static const add2Svg = 'assets/svgs/add2.svg';
 }

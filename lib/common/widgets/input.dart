@@ -17,6 +17,7 @@ class InputWidget extends StatefulWidget {
     this.keyboardType,
     this.autofocus,
     this.onTap,
+    this.onSubmitted,
     // required this.focusNode,
     // required this.style,
     // required this.cursorColor,
@@ -56,6 +57,9 @@ class InputWidget extends StatefulWidget {
   /// 点击事件
   final Function()? onTap;
 
+  /// 提交事件
+  final Function(String)? onSubmitted;
+  
   // final FocusNode focusNode;
   // final TextStyle style;
   // final Color cursorColor;

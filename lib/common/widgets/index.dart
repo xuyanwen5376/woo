@@ -11,3 +11,7 @@ export 'form/input.dart';
 export 'bottom_sheet.dart';
 export 'checkbox.dart';
 export 'dialog.dart';
+export 'initials.dart';
+export 'avatar.dart';
+export 'divider.dart';
+export 'bubble.dart';

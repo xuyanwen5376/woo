@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../index.dart';
 
 // 排版类型
-enum TextWidgetType { h1, h2, h3, h4, body, label, muted }
+enum TextWidgetType { h1, h2, h3, h4, body, label, muted, title1, title2, title3, title4, title5, title6 }
 
 class TextWidget extends StatelessWidget {
   const TextWidget({
