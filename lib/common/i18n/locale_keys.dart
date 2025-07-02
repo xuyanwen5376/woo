@@ -195,4 +195,53 @@ class LocaleKeys {
   static const profileEditNewPassword = "profile_edit_new_password";
   static const profileEditConfirmPassword = "profile_edit_confirm_password";
   static const profileEditPasswordTip = "profile_edit_password_tip";
+
+  static const chatCustomMessageGroupCreate =
+      "chat_custom_message_group_create";
+  // 聊天错误
+  static const chatErrorInit = 'chat_error_init';
+  static const chatErrorDismissedGroup = 'chat_error_dismissed_group';
+  static const chatErrorKickedOffline = 'chat_error_kicked_offline';
+  static const chatErrorConnectFailed = 'chat_error_connect_failed';
+  static const chatErrorMsgStatusSendFail = 'chat_error_msg_status_send_fail';
+
+  // 消息
+  static const messageTitle = 'message_chat_title';
+
+  // 消息聊天
+  static const chatTitle = 'chat_title';
+  static const chatBarBtnSend = 'chat_bar_btn_send';
+  static const chatBtnStart = 'chat_btn_start';
+  static const chatTipDeleteConversation = 'chat_tip_delete_conversation';
+  static const chatTipCreateChatFail = 'chat_tip_create_chat_fail';
+  static const chatGroupTitle = 'chat_group_title';
+  static const chatMessageUnit = 'chat_message_unit'; 
+  static const chatAppNotificationMessage = 'chat_app_notification_message';
+ 
+
+  // 聊天组设置
+  static const chatGroupSettingMemberAdd = 'chat_group_setting_member_add';
+  static const chatGroupSettingName = 'chat_group_setting_name';
+  static const chatGroupSettingQuit = 'chat_group_setting_quit';
+  static const chatGroupSettingDismiss = 'chat_group_setting_dismiss';
+  static const chatGroupSettingMemberKick = 'chat_group_setting_member_kick';
+
+  // 聊天状态 groupTipsElem
+  // 1:主动入群（memberList 加入群组，非 Work 群有效）
+  static const chatGroupTipEnter = 'chat_group_tip_enter';
+  // 2:被邀请入群（opMember 邀请 memberList 入群，Work 群有效）
+  static const chatGroupTipInvited = 'chat_group_tip_invited';
+  // 3:退出群 (opMember 退出群组)
+  static const chatGroupTipQuit = 'chat_group_tip_quit';
+  // 4:踢出群 (opMember 把 memberList 踢出群组)
+  static const chatGroupTipKick = 'chat_group_tip_kick';
+  // 5:设置管理员 (opMember 把 memberList 设置为管理员)
+  static const chatGroupTipSetAdmin = 'chat_group_tip_set_admin';
+  // 6:取消管理员 (opMember 取消 memberList 管理员身份)
+  static const chatGroupTipCancelAdmin = 'chat_group_tip_cancel_admin';
+  // 7:群资料变更 (opMember 修改群资料： groupName & introduction & notification & faceUrl & owner & custom)
+  static const chatGroupTipChangeInfo = 'chat_group_tip_change_info';
+  // 8:群成员资料变更 (opMember 修改群成员资料：muteTime)
+  static const chatGroupTipChangeMemberInfo =
+      'chat_group_tip_change_member_info';
 }

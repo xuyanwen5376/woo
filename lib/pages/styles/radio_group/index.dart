@@ -1,4 +1,4 @@
-library radio_group;
+library;
 
 export './controller.dart';
 export './view.dart';

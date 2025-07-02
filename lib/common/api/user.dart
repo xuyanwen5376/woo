@@ -62,5 +62,20 @@ class UserApi {
     );
     return UserProfileModel.fromJson(res.data);
   }
+
+    /// 用户列表
+  static Future<List<UserModel>> findList(String keyword,
+      {int? page, int? pageSize}) async {
+    var res = await WPHttpService.to.post(
+      '/users/findList',
+      data: {
+        "keyword": keyword,
+        "page": page,
+        "page_size": pageSize,
+      },
+    );
+    return (res.data as List).map((e) => UserModel.fromJson(e)).toList();
+  }
+
   
 }

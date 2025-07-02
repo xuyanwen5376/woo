@@ -1,4 +1,4 @@
-library user_agreement;
+library;
 
 export './controller.dart';
 export './view.dart';

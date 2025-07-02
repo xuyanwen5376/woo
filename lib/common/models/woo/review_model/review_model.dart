@@ -1,4 +1,3 @@
-import '../category_model/image.dart';
 import 'links.dart';
 
 class ReviewModel {

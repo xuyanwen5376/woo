@@ -61,7 +61,7 @@ dependencies:
   adaptive_theme: ^3.6.0
 
   # 图片缓存
-  cached_network_image: ^3.4.1
+  cached_network_image: ^3.3.1
 
   # svg
   flutter_svg: ^2.0.14
@@ -105,6 +105,8 @@ dependencies:
   # 相机拍照摄像
   wechat_camera_picker: 4.3.6
 
+  # 腾讯云 IM SDK
+  tencent_cloud_chat_sdk: ^8.6.7019+5
 
 dev_dependencies:
   flutter_test:

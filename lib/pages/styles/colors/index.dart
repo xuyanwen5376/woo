@@ -1,4 +1,4 @@
-library colors;
+library;
 
 export './controller.dart';
 export './view.dart';

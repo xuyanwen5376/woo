@@ -22,8 +22,8 @@ class BottomSheetWidget extends StatefulWidget {
     double? width,
     double? height,
     this.elevation,
-  })  : _height = height,
-        _width = width;
+  }) : _height = height,
+       _width = width;
 
   /// 内容
   final Widget content;
@@ -88,7 +88,7 @@ class BottomSheetWidget extends StatefulWidget {
   }) {
     return showModalBottomSheet<T>(
       context: context,
-      barrierColor: const Color(0xFF09101D).withOpacity(0.7),
+      barrierColor: const Color(0xFF09101D).withValues(alpha: 0.7),
       builder: (BuildContext context) {
         return BottomSheetWidget(
           title: title,
@@ -141,10 +141,12 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget>
     if (widget.title != null) {
       ws.add(widget.title!);
     } else if (widget.titleString != null) {
-      ws.add(TextWidget.h4(
-        widget.titleString!,
-        size: 16, // 字体和 body 一致小些
-      ));
+      ws.add(
+        TextWidget.h4(
+          widget.titleString!,
+          size: 16, // 字体和 body 一致小些
+        ),
+      );
     }
 
     // 内容
@@ -165,9 +167,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget>
     // 背景、圆角、边框
     child = child.decorated(
       color: widget.backgroundColor ?? Colors.transparent,
-      borderRadius: BorderRadius.circular(
-        widget.radius ?? AppRadius.card,
-      ),
+      borderRadius: BorderRadius.circular(widget.radius ?? AppRadius.card),
       // border: Border.all(
       //   color: context.colors.scheme.outline,
       //   width: widget.border ?? AppBorder.card,
@@ -185,10 +185,7 @@ class _BottomSheetWidgetState extends State<BottomSheetWidget>
 
     // 约束
     if (widget._width != null || widget._height != null) {
-      child = child.tight(
-        height: widget._height,
-        width: widget._width,
-      );
+      child = child.tight(height: widget._height, width: widget._width);
     }
 
     return BottomSheet(

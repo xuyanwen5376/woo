@@ -141,8 +141,8 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
-  })  : _width = width,
-        variant = ButtonWidgetVariant.primary;
+  }) : _width = width,
+       variant = ButtonWidgetVariant.primary;
 
   /// 次要
   const ButtonWidget.secondary(
@@ -165,8 +165,8 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
-  })  : _width = width,
-        variant = ButtonWidgetVariant.secondary;
+  }) : _width = width,
+       variant = ButtonWidgetVariant.secondary;
 
   // destructive 警告
   const ButtonWidget.destructive(
@@ -189,8 +189,8 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
-  })  : _width = width,
-        variant = ButtonWidgetVariant.destructive;
+  }) : _width = width,
+       variant = ButtonWidgetVariant.destructive;
 
   // outline
   const ButtonWidget.outline(
@@ -213,8 +213,8 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
-  })  : _width = width,
-        variant = ButtonWidgetVariant.outline;
+  }) : _width = width,
+       variant = ButtonWidgetVariant.outline;
 
   // ghost
   const ButtonWidget.ghost(
@@ -237,8 +237,8 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
-  })  : _width = width,
-        variant = ButtonWidgetVariant.ghost;
+  }) : _width = width,
+       variant = ButtonWidgetVariant.ghost;
 
   // link
   const ButtonWidget.link(
@@ -261,8 +261,8 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
-  })  : _width = width,
-        variant = ButtonWidgetVariant.link;
+  }) : _width = width,
+       variant = ButtonWidgetVariant.link;
 
   // icon
   const ButtonWidget.icon(
@@ -285,8 +285,8 @@ class ButtonWidget extends StatefulWidget {
     this.mainAxisAlignment,
     this.mainAxisSize,
     this.elevation,
-  })  : _width = width,
-        variant = ButtonWidgetVariant.icon;
+  }) : _width = width,
+       variant = ButtonWidgetVariant.icon;
 
   @override
   State<ButtonWidget> createState() => _ButtonWidgetState();
@@ -330,7 +330,6 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       case ButtonWidgetVariant.icon:
         color = widget.textColor ?? colorScheme.onPrimaryContainer;
         break;
-      default:
     }
 
     return color;
@@ -353,11 +352,11 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       case ButtonWidgetVariant.outline:
       case ButtonWidgetVariant.ghost:
         color = widget.backgroundColor ?? Colors.transparent;
+        break;
       case ButtonWidgetVariant.link:
       case ButtonWidgetVariant.icon:
         color = colorScheme.surface;
         break;
-      default:
     }
     return color;
   }
@@ -365,24 +364,23 @@ class _ButtonWidgetState extends State<ButtonWidget> {
   // 高亮色
   Color _highlightColor() {
     var colorScheme = context.colors.scheme;
-    Color color = colorScheme.primary.withOpacity(0.1);
+    Color color = colorScheme.primary.withValues(alpha: 0.1);
     switch (widget.variant) {
       case ButtonWidgetVariant.primary:
-        color = colorScheme.primaryContainer.withOpacity(0.1);
+        color = colorScheme.primaryContainer.withValues(alpha: 0.1);
         break;
       case ButtonWidgetVariant.secondary:
-        color = colorScheme.secondaryContainer.withOpacity(0.1);
+        color = colorScheme.secondaryContainer.withValues(alpha: 0.1);
         break;
       case ButtonWidgetVariant.destructive:
-        color = colorScheme.errorContainer.withOpacity(0.1);
+        color = colorScheme.errorContainer.withValues(alpha: 0.1);
         break;
       case ButtonWidgetVariant.outline:
       case ButtonWidgetVariant.ghost:
       case ButtonWidgetVariant.link:
       case ButtonWidgetVariant.icon:
-        color = colorScheme.surfaceContainer.withOpacity(0.1);
+        color = colorScheme.surfaceContainer.withValues(alpha: 0.1);
         break;
-      default:
     }
     return color;
   }
@@ -399,10 +397,9 @@ class _ButtonWidgetState extends State<ButtonWidget> {
         return null;
       case ButtonWidgetVariant.outline:
         return BorderRadius.circular(
-            widget.borderRadius ?? _size(AppRadius.button));
-      default:
+          widget.borderRadius ?? _size(AppRadius.button),
+        );
     }
-    return null;
   }
 
   BoxBorder? _border() {
@@ -419,9 +416,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
           color: widget.borderColor ?? context.colors.scheme.outline,
           width: AppBorder.button,
         );
-      default:
     }
-    return null;
   }
 
   bool _ripple(bool enbaled) {
@@ -432,7 +427,12 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     switch (widget.variant) {
       case ButtonWidgetVariant.link:
         return false;
-      default:
+      case ButtonWidgetVariant.primary:
+      case ButtonWidgetVariant.secondary:
+      case ButtonWidgetVariant.destructive:
+      case ButtonWidgetVariant.outline:
+      case ButtonWidgetVariant.ghost:
+      case ButtonWidgetVariant.icon:
         return true;
     }
   }
@@ -448,20 +448,24 @@ class _ButtonWidgetState extends State<ButtonWidget> {
       ws.add(widget.child!);
     }
     if (widget.text?.isNotEmpty == true) {
-      ws.add(TextWidget.label(
-        widget.text!,
-        color: _textColor(),
-        scale: widget.scale,
-        textAlign: TextAlign.center,
-      ));
+      ws.add(
+        TextWidget.label(
+          widget.text!,
+          color: _textColor(),
+          scale: widget.scale,
+          textAlign: TextAlign.center,
+        ),
+      );
     }
 
     // loading Indicator
     if (widget.loading == true) {
-      ws.add(CircularProgressIndicator(
-        strokeWidth: 2,
-        valueColor: AlwaysStoppedAnimation(_textColor()),
-      ).tightSize(_size(16)));
+      ws.add(
+        CircularProgressIndicator(
+          strokeWidth: 2,
+          valueColor: AlwaysStoppedAnimation(_textColor()),
+        ).tightSize(_size(16)),
+      );
     }
 
     // onTap 事件 为空，关闭启用状态
@@ -476,21 +480,21 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     }
 
     // 子组件
-    Widget child = ws.length == 1
-        ? ws[0]
-        : ws.toRowSpace(
-            space: widget.iconSpace ?? _size(AppSpace.iconText),
-            mainAxisAlignment:
-                widget.mainAxisAlignment ?? MainAxisAlignment.center,
-            mainAxisSize: widget.mainAxisSize ?? MainAxisSize.min,
-          );
+    Widget child =
+        ws.length == 1
+            ? ws[0]
+            : ws.toRowSpace(
+              space: widget.iconSpace ?? _size(AppSpace.iconText),
+              mainAxisAlignment:
+                  widget.mainAxisAlignment ?? MainAxisAlignment.center,
+              mainAxisSize: widget.mainAxisSize ?? MainAxisSize.min,
+            );
 
     // 约束, 不设置组件默认紧包裹
     if (widget._width != null || widget.height != null) {
-      child = child.alignment(Alignment.center).constrained(
-            width: widget._width,
-            height: widget.height,
-          );
+      child = child
+          .alignment(Alignment.center)
+          .constrained(width: widget._width, height: widget.height);
     }
 
     // 边距
@@ -518,8 +522,9 @@ class _ButtonWidgetState extends State<ButtonWidget> {
 
     // 裁切圆角
     if (widget.borderRadius == null || widget.borderRadius! > 0) {
-      child =
-          child.clipRRect(all: _size(widget.borderRadius ?? AppRadius.button));
+      child = child.clipRRect(
+        all: _size(widget.borderRadius ?? AppRadius.button),
+      );
     }
 
     // 阴影
@@ -537,14 +542,16 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     // 事件、透明度、缩放
     child = child
         .gestures(
-          onTapChange: enabled
-              ? (tapStatus) => setState(() => pressed = tapStatus)
-              : null,
-          onTap: enabled
-              ? () {
-                  widget.onTap?.call();
-                }
-              : null,
+          onTapChange:
+              enabled
+                  ? (tapStatus) => setState(() => pressed = tapStatus)
+                  : null,
+          onTap:
+              enabled
+                  ? () {
+                    widget.onTap?.call();
+                  }
+                  : null,
         )
         .opacity(enabled ? 1.0 : 0.5)
         .scale(all: pressed ? 0.99 : 1.0);
@@ -565,4 +572,3 @@ class _ButtonWidgetState extends State<ButtonWidget> {
     return _buildView();
   }
 }
-

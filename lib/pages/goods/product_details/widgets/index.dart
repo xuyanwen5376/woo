@@ -1,4 +1,4 @@
-library widgets;
+library;
 
 export 'tab_product.dart';
 export 'tab_detail.dart';

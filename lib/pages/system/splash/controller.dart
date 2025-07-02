@@ -30,10 +30,6 @@ class SplashController extends GetxController {
     update(['splash_title']);
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   @override
   void onReady() {
@@ -42,8 +38,4 @@ class SplashController extends GetxController {
     _jumpToPage();
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 }

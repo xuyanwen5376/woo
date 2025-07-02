@@ -201,4 +201,44 @@ Map<String, String> localeEn = {
   LocaleKeys.profileEditNewPassword: 'New password',
   LocaleKeys.profileEditConfirmPassword: 'Confirm password',
   LocaleKeys.profileEditPasswordTip: 'No input means no modification',
+ 
+  // 消息
+  LocaleKeys.messageTitle: 'Message',
+  // 聊天
+  LocaleKeys.chatTitle: 'Chat',
+  LocaleKeys.chatBarBtnSend: 'Send',
+  LocaleKeys.chatBtnStart: 'Start',
+  LocaleKeys.chatTipDeleteConversation: 'Delete conversation succeed',
+  LocaleKeys.chatTipCreateChatFail: 'Create chat fail',
+  LocaleKeys.chatGroupTitle: 'Group (@count)',
+  LocaleKeys.chatMessageUnit: 'Message',
+  LocaleKeys.chatCustomMessageGroupCreate: '@members create group',
+  LocaleKeys.chatAppNotificationMessage: '@sender Sent you a new message',
+
+  // 聊天错误
+  LocaleKeys.chatErrorInit: 'Chat init error',
+  LocaleKeys.chatErrorDismissedGroup: 'Group has been dismissed',
+  LocaleKeys.chatErrorConnectFailed: 'Connect failed',
+  LocaleKeys.chatErrorKickedOffline:
+      'Your account has been logged in on another device, you have been forced offline, reconnect immediately?',
+  LocaleKeys.chatErrorMsgStatusSendFail:
+      'Sending failed, double-click the message to retransmit',
+
+  // 群设置
+  LocaleKeys.chatGroupSettingMemberAdd: '+ Add member',
+  LocaleKeys.chatGroupSettingName: 'Group name',
+  LocaleKeys.chatGroupSettingQuit: 'Quit group',
+  LocaleKeys.chatGroupSettingDismiss: 'Dismiss group',
+  LocaleKeys.chatGroupSettingMemberKick: 'Kick group member',
+
+  // 聊天群提示类型
+  LocaleKeys.chatGroupTipEnter: '@members enter group',
+  LocaleKeys.chatGroupTipInvited: 'invite @members to group',
+  LocaleKeys.chatGroupTipQuit: '@members quit group',
+  LocaleKeys.chatGroupTipKick: 'kick @members',
+  LocaleKeys.chatGroupTipSetAdmin: '@members set admin',
+  LocaleKeys.chatGroupTipCancelAdmin: '@members cancel admin',
+  LocaleKeys.chatGroupTipChangeInfo: 'change group info',
+  LocaleKeys.chatGroupTipChangeMemberInfo: '@members change member info',
+
 };

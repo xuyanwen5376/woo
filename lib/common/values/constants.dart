@@ -36,4 +36,11 @@ class Constants {
   // 新旧
   static const storageProductsAttributesCondition =
       'products_attributes_condition';
+
+  // 腾讯 tim app id     ==  ed534e9458d4d6095a7fcc2f5968312e3f5438553d3a0256d89558fd5a05b762
+  // eJyrVgrxCdYrSy1SslIy0jNQ0gHzM1NS80oy0zLBwlUZiXnpxYl5ULnilOzEgoLMFCUrQzMDAwNLEwsLY4hMakVBZlEqUNzU1NQIKAURLcnMBYmZmxqaGFmam5lDTclMBxodHOznmObnUVkYrB2RVRHo5Z-iV5noZuYdFaOflG-qZVAZ6heoHaPvm5GZZxpqq1QLAGEhMxk_
+  static const timAppID = 1600094883 ;// 1600094880;
+
+  // 图片服务器
+  static const imageServer = 'https://wpapi.ducafecat.tech';
 }

@@ -23,9 +23,9 @@ class DialogWidget extends StatelessWidget {
     double? elevation,
     this.cancel,
     this.confirm,
-  })  : _elevation = elevation,
-        _height = height,
-        _width = width;
+  }) : _elevation = elevation,
+       _height = height,
+       _width = width;
 
   final Widget? title;
   final Widget? description;
@@ -70,26 +70,27 @@ class DialogWidget extends StatelessWidget {
   }) {
     return showDialog<T>(
       context: context,
-      barrierColor: const Color(0xFF09101D).withOpacity(0.7),
-      builder: (context) => DialogWidget(
-        title: title,
-        description: description,
-        content: content,
-        footer: footer,
-        titleString: titleString,
-        descriptionString: descriptionString,
-        padding: padding,
-        backgroundColor: backgroundColor,
-        radius: radius,
-        border: border,
-        width: width,
-        height: height,
-        elevation: elevation,
-        confirm: confirm,
-        cancel: cancel,
-        onCancel: onCancel,
-        onConfirm: onConfirm,
-      ),
+      barrierColor: const Color(0xFF09101D).withValues(alpha: 0.7),
+      builder:
+          (context) => DialogWidget(
+            title: title,
+            description: description,
+            content: content,
+            footer: footer,
+            titleString: titleString,
+            descriptionString: descriptionString,
+            padding: padding,
+            backgroundColor: backgroundColor,
+            radius: radius,
+            border: border,
+            width: width,
+            height: height,
+            elevation: elevation,
+            confirm: confirm,
+            cancel: cancel,
+            onCancel: onCancel,
+            onConfirm: onConfirm,
+          ),
     );
   }
 
@@ -125,24 +126,18 @@ class DialogWidget extends StatelessWidget {
       btns.add(confirm!);
     }
     if (onCancel != null) {
-      btns.add(ButtonWidget.ghost(
-        'cancel',
-        onTap: onCancel,
-      ));
+      btns.add(ButtonWidget.ghost('cancel', onTap: onCancel));
     }
     if (onConfirm != null) {
-      btns.add(ButtonWidget.primary(
-        'confirm',
-        onTap: onConfirm,
-      ));
+      btns.add(ButtonWidget.primary('confirm', onTap: onConfirm));
     }
-    ws.add(btns.length == 1
-        ? btns[0]
-        : btns
-            .toRowSpace(
-              mainAxisSize: MainAxisSize.min,
-            )
-            .alignment(Alignment.center));
+    ws.add(
+      btns.length == 1
+          ? btns[0]
+          : btns
+              .toRowSpace(mainAxisSize: MainAxisSize.min)
+              .alignment(Alignment.center),
+    );
 
     // 底部
     if (footer != null) {
@@ -164,9 +159,7 @@ class DialogWidget extends StatelessWidget {
     // 背景、圆角、边框
     child = child.decorated(
       color: backgroundColor ?? context.colors.scheme.surface,
-      borderRadius: BorderRadius.circular(
-        radius ?? AppRadius.card,
-      ),
+      borderRadius: BorderRadius.circular(radius ?? AppRadius.card),
       border: Border.all(
         color: context.colors.scheme.outline,
         width: border ?? AppBorder.card,
@@ -176,22 +169,15 @@ class DialogWidget extends StatelessWidget {
     // 阴影
     child = child.elevation(
       _elevation ?? AppElevation.card,
-      borderRadius: BorderRadius.circular(
-        radius ?? AppRadius.card,
-      ),
+      borderRadius: BorderRadius.circular(radius ?? AppRadius.card),
       shadowColor: context.colors.shadow,
     );
 
     // 约束
     if (_width != null || _height != null) {
-      child = child.tight(
-        height: _height,
-        width: _width,
-      );
+      child = child.tight(height: _height, width: _width);
     }
 
-    return Dialog(
-      child: child,
-    );
+    return Dialog(child: child);
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import '../../../common/index.dart';
@@ -55,6 +54,9 @@ class MainController extends GetxController {
   _initData() async {
     // 读取用户 profile
     await UserService.to.getProfile();
+
+    // IM 登录
+    // IMService.to.login();
 
     update(["main"]);
   }

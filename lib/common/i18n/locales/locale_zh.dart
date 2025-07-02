@@ -199,4 +199,42 @@ Map<String, String> localeZh = {
   LocaleKeys.profileEditNewPassword: '新密码',
   LocaleKeys.profileEditConfirmPassword: '确认密码',
   LocaleKeys.profileEditPasswordTip: '不输入表示不修改',
+
+  // 消息
+  LocaleKeys.messageTitle: '消息',
+
+  // 聊天
+  LocaleKeys.chatTitle: '聊天',
+  LocaleKeys.chatBarBtnSend: '发送',
+  LocaleKeys.chatBtnStart: '开聊',
+  LocaleKeys.chatTipDeleteConversation: '删除会话成功',
+  LocaleKeys.chatTipCreateChatFail: '创建聊天失败',
+  LocaleKeys.chatGroupTitle: '群聊 (@count)',
+  LocaleKeys.chatMessageUnit: '条',
+  LocaleKeys.chatCustomMessageGroupCreate: '@members 加入了聊天',
+  LocaleKeys.chatAppNotificationMessage: '@sender 给你发了新消息',
+
+  // 聊天错误
+  LocaleKeys.chatErrorInit: '聊天初始化错误',
+  LocaleKeys.chatErrorDismissedGroup: '群聊已解散',
+  LocaleKeys.chatErrorConnectFailed: '您与服务器已断开，网络连接失败！',
+  LocaleKeys.chatErrorKickedOffline: '您的账号在其他设备登录，您已被迫下线，立刻重连？',
+  LocaleKeys.chatErrorMsgStatusSendFail: '发送失败，双击消息重发',
+
+  // 群设置
+  LocaleKeys.chatGroupSettingMemberAdd: '+ 添加成员',
+  LocaleKeys.chatGroupSettingName: '群聊名称',
+  LocaleKeys.chatGroupSettingQuit: '退出群聊',
+  LocaleKeys.chatGroupSettingDismiss: '解散群聊',
+  LocaleKeys.chatGroupSettingMemberKick: '移除成员',
+
+  // 聊天群提示类型
+  LocaleKeys.chatGroupTipEnter: '@members 进入了群聊天',
+  LocaleKeys.chatGroupTipInvited: '@members 被邀请入群',
+  LocaleKeys.chatGroupTipQuit: '@members 退出群',
+  LocaleKeys.chatGroupTipKick: '@members 被踢出群聊',
+  LocaleKeys.chatGroupTipSetAdmin: '@members 设置管理员',
+  LocaleKeys.chatGroupTipCancelAdmin: '@members 取消管理员',
+  LocaleKeys.chatGroupTipChangeInfo: '群资料变更',
+  LocaleKeys.chatGroupTipChangeMemberInfo: '@members 群成员资料变更',
 };

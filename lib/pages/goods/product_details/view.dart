@@ -41,7 +41,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
   Widget _buildTitle(BuildContext context) {
     return <Widget>[
       <Widget>[
-        TextWidget.h2("￥" + (controller.product?.price ?? "0")),
+        TextWidget.h2("￥${controller.product?.price ?? "0"}"),
         TextWidget.label(controller.product?.name ?? "-"),
       ].toColumn(crossAxisAlignment: CrossAxisAlignment.start).expanded(),
       IconWidget(

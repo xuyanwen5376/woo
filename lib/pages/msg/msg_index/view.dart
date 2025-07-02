@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../common/index.dart';
 import 'index.dart';
 
 class MsgIndexPage extends GetView<MsgIndexController> {
@@ -20,7 +21,15 @@ class MsgIndexPage extends GetView<MsgIndexController> {
       id: "msg_index",
       builder: (_) {
         return Scaffold(
-          appBar: AppBar(title: const Text("msg_index")),
+          appBar: AppBar(title: const Text("msg_index"),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Get.toNamed(RouteNames.chatChatFindUser);
+              },
+              icon: const Icon(Icons.add),
+            ),
+          ],),
           body: SafeArea(
             child: _buildView(),
           ),

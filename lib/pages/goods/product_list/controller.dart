@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../common/components/RefreshMixin.dart';
+import '../../../common/components/refresh_mixin.dart';
 import '../../../common/index.dart';
 
 class ProductListController extends GetxController with RefreshMixin {
@@ -17,11 +17,6 @@ class ProductListController extends GetxController with RefreshMixin {
   }
 
   void onTap() {}
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   @override
   void onReady() {

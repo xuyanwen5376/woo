@@ -39,18 +39,22 @@ class SliderIndicatorWidget extends StatelessWidget {
         return Container(
           margin: const EdgeInsets.symmetric(horizontal: 3),
           // 圆型宽度 6 , 否则当前位置 15 , 其他位置 8
-          width: !isCircle
-              ? currentIndex == index
-                  ? 15.0
-                  : 8
-              : 6,
+          width:
+              !isCircle
+                  ? currentIndex == index
+                      ? 15.0
+                      : 8
+                  : 6,
           // 圆型高度 6 , 否则 4
           height: !isCircle ? 4 : 6,
           decoration: BoxDecoration(
             // 圆角 4
             borderRadius: const BorderRadius.all(Radius.circular(4)),
             // 非当前位置透明度 0.3
-            color: currentIndex == index ? boxColor : boxColor.withOpacity(0.3),
+            color:
+                currentIndex == index
+                    ? boxColor
+                    : boxColor.withValues(alpha: 0.3),
           ),
         );
       }),

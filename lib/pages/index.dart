@@ -1,4 +1,4 @@
-library pages;
+library;
 
 export 'cart/apply_promo_code/index.dart';
 export 'cart/buy_done/index.dart';
@@ -41,4 +41,5 @@ export 'system/register_pin/index.dart';
 export 'system/splash/index.dart';
 export 'system/user_agreement/index.dart';
 export 'system/welcome/index.dart';
-export 'msg/msg_index/index.dart';
+export 'msg/msg_index/index.dart';    
+export 'chat/chat_find_user/index.dart'; 

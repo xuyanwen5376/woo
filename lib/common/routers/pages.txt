@@ -16,6 +16,10 @@
         page: () => const CartIndexPage(),
       ),
       GetPage(
+        name: RouteNames.chatChatFindUser,
+        page: () => const ChatFindUserPage(),
+      ),
+      GetPage(
         name: RouteNames.goodsCategory,
         page: () => const CategoryPage(),
       ),
@@ -26,6 +30,10 @@
       GetPage(
         name: RouteNames.goodsProductDetails,
         page: () => const ProductDetailsPage(),
+      ),
+      GetPage(
+        name: RouteNames.goodsProductDetailsWidgets,
+        page: () => const WidgetsPage(),
       ),
       GetPage(
         name: RouteNames.goodsProductList,
@@ -138,6 +146,10 @@
       GetPage(
         name: RouteNames.stylesText,
         page: () => const TextPage(),
+      ),
+      GetPage(
+        name: RouteNames.systemInput,
+        page: () => const InputPage(),
       ),
       GetPage(
         name: RouteNames.systemLogin,

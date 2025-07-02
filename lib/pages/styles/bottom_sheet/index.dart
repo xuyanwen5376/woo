@@ -1,4 +1,4 @@
-library bottom_sheet;
+library;
 
 export './controller.dart';
 export './view.dart';

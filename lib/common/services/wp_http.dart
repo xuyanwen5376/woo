@@ -106,9 +106,9 @@ class RequestInterceptors extends Interceptor {
       options.headers['Authorization'] = 'Bearer ${UserService.to.token}';
     }
     // 打印请求url
-    print('Url: ${options.baseUrl}${options.path}');
+    // print('Url: ${options.baseUrl}${options.path}');
     // 打印请求参数
-    print('Query: ${options.queryParameters}');
+    // print('Query: ${options.queryParameters}');
 
     return handler.next(options);
     // 如果你想完成请求并返回一些自定义数据，你可以resolve一个Response对象 `handler.resolve(response)`。
@@ -138,6 +138,7 @@ class RequestInterceptors extends Interceptor {
       handler.next(response);
     }
   }
+
   // 退出并重新登录
   Future<void> _errorNoAuthLogout() async {
     await UserService.to.logout();

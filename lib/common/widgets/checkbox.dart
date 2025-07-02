@@ -22,35 +22,33 @@ class CheckboxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return <Widget>[
-      // 图标按钮
-      Icon(
-        checked == true ? Icons.check_box : Icons.check_box_outline_blank,
-        color: context.colors.scheme.onSurface.withOpacity(0.8),
-      ),
+          // 图标按钮
+          Icon(
+            checked == true ? Icons.check_box : Icons.check_box_outline_blank,
+            color: context.colors.scheme.onSurface.withValues(alpha: 0.8),
+          ),
 
-      // 标题、说明
-      if (title != null || description != null)
-        <Widget>[
-          if (title != null) TextWidget.label(title!),
-          if (description != null)
-            TextWidget.muted(
-              description!,
-              softWrap: true,
-              maxLines: 3,
-            ),
+          // 标题、说明
+          if (title != null || description != null)
+            <Widget>[
+                  if (title != null) TextWidget.label(title!),
+                  if (description != null)
+                    TextWidget.muted(description!, softWrap: true, maxLines: 3),
+                ]
+                .toColumnSpace(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                )
+                .expanded(),
         ]
-            .toColumnSpace(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-            )
-            .expanded(),
-    ]
         .toRowSpace(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-    )
-        .gestures(onTap: () {
-      onChanged?.call(!(checked ?? false));
-    });
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+        )
+        .gestures(
+          onTap: () {
+            onChanged?.call(!(checked ?? false));
+          },
+        );
   }
 }

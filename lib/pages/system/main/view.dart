@@ -25,7 +25,7 @@ class _MainPageState extends State<MainPage>
 }
 
 class _MainViewGetX extends GetView<MainController> {
-  const _MainViewGetX({super.key});
+  const _MainViewGetX();
 
   // 主视图
   Widget _buildView(BuildContext context) {
@@ -68,7 +68,7 @@ class _MainViewGetX extends GetView<MainController> {
                 NavigationItemModel(
                   label: LocaleKeys.tabBarMessage.tr,
                   icon: AssetsSvgs.navMessageSvg,
-                  count: 9,
+                  count: 9 //UnreadCount.value,
                 ),
                 NavigationItemModel(
                   label: LocaleKeys.tabBarProfile.tr,

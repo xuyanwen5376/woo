@@ -62,7 +62,7 @@ class ProductDetailsController extends GetxController
     });
   }
 
-  void onChangeBanner(int index, _reason) {
+  void onChangeBanner(int index, reason) {
     bannerCurrentIndex = index;
     update(["banner"]);
   }
@@ -123,10 +123,6 @@ class ProductDetailsController extends GetxController
 
 
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   @override
   void onReady() {

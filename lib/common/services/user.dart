@@ -50,11 +50,17 @@ class UserService extends GetxService {
   /// 获取用户 profile
   Future<void> getProfile() async {
     if (token.isEmpty) return;
-    UserProfileModel result = await UserApi.profile();
-    _profile(result);
-    _isLogin.value = true;
+    try {
+      UserProfileModel result = await UserApi.profile();
+      _profile(result);
+      _isLogin.value = true;
 
-    Storage().setString(Constants.storageProfile, jsonEncode(result));
+      Storage().setString(Constants.storageProfile, jsonEncode(result));
+    } catch (e) {
+      // 如果获取 profile 失败，记录错误但不抛出异常
+      print('Failed to get user profile: $e');
+      _isLogin.value = false;
+    }
   }
 
   /// 设置用户 profile

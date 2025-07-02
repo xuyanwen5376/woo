@@ -1,4 +1,4 @@
-import 'package:flutter_woo_course_2025/common/components/RefreshMixin.dart';
+import 'package:flutter_woo_course_2025/common/components/refresh_mixin.dart';
 import 'package:get/get.dart';
 
 import '../../../common/index.dart';
@@ -64,7 +64,7 @@ class HomeController extends GetxController with RefreshMixin {
 
   // ALL 点击事件
   void onAllTap(bool featured) {
-    print(featured);
+    // print(featured);
     Get.toNamed(RouteNames.goodsProductList, arguments: {"featured": featured});
   }
 
@@ -100,10 +100,7 @@ class HomeController extends GetxController with RefreshMixin {
       Constants.storageProductsAttributesColors,
       attributeColors,
     );
-    Storage().setJson(
-      Constants.storageProductsAttributesSizes,
-      attributeSizes,
-    );
+    Storage().setJson(Constants.storageProductsAttributesSizes, attributeSizes);
 
     update(["home"]);
   }
@@ -123,6 +120,7 @@ class HomeController extends GetxController with RefreshMixin {
     refreshController.dispose();
   }
 
+  @override
   Future<void> onLoading() async {
     if (!hasMore) {
       refreshController.loadNoData();

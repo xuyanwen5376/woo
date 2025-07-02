@@ -82,7 +82,9 @@ class CartIndexPage extends GetView<CartIndexController> {
                   "${LocaleKeys.gCartTextShippingCost.tr}: \$${CartService.to.shipping}",
                 ),
                 // 代金券
-                TextWidget.label("${LocaleKeys.gCartTextVocher.tr}: \$${CartService.to.discount} "),
+                TextWidget.label(
+                  "${LocaleKeys.gCartTextVocher.tr}: \$${CartService.to.discount} ",
+                ),
               ]
               .toColumn(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +94,7 @@ class CartIndexPage extends GetView<CartIndexController> {
 
           // 费用小计
           TextWidget.label(
-            "${LocaleKeys.gCartTextTotal.tr}: \$${CartService.to.totalItemsPrice - CartService.to.discount  + CartService.to.shipping}",
+            "${LocaleKeys.gCartTextTotal.tr}: \$${CartService.to.totalItemsPrice - CartService.to.discount + CartService.to.shipping}",
           ).paddingRight(AppSpace.iconTextMedium),
 
           // 确认下单 checkout
@@ -105,7 +107,7 @@ class CartIndexPage extends GetView<CartIndexController> {
         .toRow()
         .paddingAll(AppSpace.card)
         .decorated(
-          color: context.colors.scheme.secondary.withOpacity(0.1),
+          color: context.colors.scheme.secondary.withValues(alpha: 0.1),
           border: Border.all(color: context.colors.scheme.secondary, width: 1),
         );
   }

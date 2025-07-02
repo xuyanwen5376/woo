@@ -1,4 +1,4 @@
-library list_tile;
+library;
 
 export './controller.dart';
 export './view.dart';

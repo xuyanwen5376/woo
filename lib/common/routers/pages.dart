@@ -96,5 +96,9 @@ class RoutePages {
       name: RouteNames.systemMessageIndex,
       page: () => const MsgIndexPage(),
     ),
+    GetPage(
+      name: RouteNames.chatChatFindUser,
+      page: () => const ChatFindUserPage(),
+    ),
   ];
 }

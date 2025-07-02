@@ -1,4 +1,4 @@
-library popover;
+library;
 
 export './controller.dart';
 export './view.dart';
