@@ -64,7 +64,7 @@ class ProductDetailsController extends GetxController
 
   void onChangeBanner(int index, reason) {
     bannerCurrentIndex = index;
-    update(["banner"]);
+    update(["product_banner"]);
   }
 
   // 图片浏览

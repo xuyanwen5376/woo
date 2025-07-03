@@ -171,6 +171,102 @@ class TextWidget extends StatelessWidget {
     this.fontStyle,
   }) : type = TextWidgetType.muted;
 
+  /// title1
+  const TextWidget.title1(
+    this.text, {
+    super.key,
+    this.scale,
+    this.size,
+    this.color,
+    this.weight = FontWeight.w400,
+    this.maxLines,
+    this.softWrap,
+    this.overflow,
+    this.textAlign,
+    this.textStyle,
+    this.fontStyle,
+  }) : type = TextWidgetType.title1;
+
+  /// title2
+  const TextWidget.title2(
+    this.text, {
+    super.key,
+    this.scale,
+    this.size,
+    this.color,
+    this.weight = FontWeight.w400,
+    this.maxLines,
+    this.softWrap,
+    this.overflow,
+    this.textAlign,
+    this.textStyle,
+    this.fontStyle,
+  }) : type = TextWidgetType.title2;
+
+  /// title3
+  const TextWidget.title3(
+    this.text, {
+    super.key,
+    this.scale,
+    this.size,
+    this.color,
+    this.weight = FontWeight.w400,
+    this.maxLines,
+    this.softWrap,
+    this.overflow,
+    this.textAlign,
+    this.textStyle,
+    this.fontStyle,
+  }) : type = TextWidgetType.title3;
+
+  /// title4
+  const TextWidget.title4(
+    this.text, {
+    super.key,
+    this.scale,
+    this.size,
+    this.color,
+    this.weight = FontWeight.w400,
+    this.maxLines,
+    this.softWrap,
+    this.overflow,
+    this.textAlign,
+    this.textStyle,
+    this.fontStyle,
+  }) : type = TextWidgetType.title4;
+
+  /// title5
+  const TextWidget.title5(
+    this.text, {
+    super.key,
+    this.scale,
+    this.size,
+    this.color,
+    this.weight = FontWeight.w400,
+    this.maxLines,
+    this.softWrap,
+    this.overflow,
+    this.textAlign,
+    this.textStyle,
+    this.fontStyle,
+  }) : type = TextWidgetType.title5;
+
+  /// title6
+  const TextWidget.title6(
+    this.text, {
+    super.key,
+    this.scale,
+    this.size,
+    this.color,
+    this.weight = FontWeight.w400,
+    this.maxLines,
+    this.softWrap,
+    this.overflow,
+    this.textAlign,
+    this.textStyle,
+    this.fontStyle,
+  }) : type = TextWidgetType.title6;
+
   /// 文字尺寸
   double _fontSize() {
     // 计算字体

@@ -1,5 +1,6 @@
 import 'package:ducafe_ui_core/ducafe_ui_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
@@ -14,8 +15,15 @@ class HomePage extends GetView<HomeController> {
     return AppBar(
       // 背景透明
       backgroundColor: Colors.transparent,
+
+      // 系统状态栏样式
+      systemOverlayStyle:
+          Get.context?.platformBrightness() == Brightness.dark
+              ? SystemUiOverlayStyle.light
+              : SystemUiOverlayStyle.dark,
+
       // 取消阴影
-      elevation: 0,
+      // elevation: 0,
       // 标题栏左侧间距
       titleSpacing: AppSpace.listItem,
       // 搜索栏
@@ -30,16 +38,16 @@ class HomePage extends GetView<HomeController> {
 
             // 分割线
             SizedBox(
-              width: 1,
+              width: 2,
               height: 18,
               child: Container(color: context.colors.scheme.outline),
-            ).paddingHorizontal(5),
+            ).paddingHorizontal(AppSpace.iconTextSmail),
 
             // 拍照
             IconWidget.icon(
               Icons.camera_alt_outlined,
               size: 24,
-              color: context.colors.scheme.outline,
+              color: AppColors.onSurface,
             ),
           ]
           .toRow()
@@ -56,7 +64,7 @@ class HomePage extends GetView<HomeController> {
         // 图标
         const IconWidget.svg(
               AssetsSvgs.pNotificationsSvg,
-              size: 20,
+              size: 16,
               isDot: true, // 未读消息 小圆点
             )
             .unconstrained() // 去掉约束, appBar 会有个约束下来

@@ -163,7 +163,8 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
   Widget _buildButtons(BuildContext context) {
     return <Widget>[
           // 加入购物车
-          ButtonWidget.secondary(LocaleKeys.gDetailBtnAddCart.tr,
+          ButtonWidget.secondary(
+            LocaleKeys.gDetailBtnAddCart.tr,
             onTap: () {
               controller.onAddCartTap();
             },

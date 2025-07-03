@@ -17,7 +17,7 @@ class WPHttpService extends GetxService {
 
     // 初始 dio
     var options = BaseOptions(
-      baseUrl:  Constants.wpApiBaseUrl2,
+      baseUrl:  Constants.wpApiBaseUrl,
       connectTimeout: const Duration(seconds: 10), // 10000, // 10秒
       receiveTimeout: const Duration(seconds: 5), // 5000, // 5秒
       headers: {},

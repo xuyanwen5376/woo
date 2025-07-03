@@ -69,7 +69,9 @@ class HomeController extends GetxController with RefreshMixin {
   }
 
   // 导航点击事件
-  void onAppBarTap() {}
+  void onAppBarTap() {
+    Get.toNamed(RouteNames.searchSearchIndex);
+  }
 
   _initData() async {
     // 首页
