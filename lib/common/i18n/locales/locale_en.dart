@@ -106,7 +106,7 @@ Map<String, String> localeEn = {
   LocaleKeys.searchFilterBrand: 'Brand',
   LocaleKeys.searchFilterGender: 'Gender',
   LocaleKeys.searchFilterCondition: 'Condition',
-
+  LocaleKeys.searchFilterStars: 'Stars',
   // 我的
   LocaleKeys.myTabWishlist: 'Wishlist',
   LocaleKeys.myTabFollowing: 'Following',

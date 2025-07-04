@@ -100,6 +100,7 @@ class LocaleKeys {
   static const searchFilterBrand = "search_filter_brand";
   static const searchFilterGender = "search_filter_gender";
   static const searchFilterCondition = "search_filter_condition";
+  static const searchFilterStars = "search_filter_stars";
 
   // 我的
   static const myTabWishlist = "my_tab_wishlist";

@@ -15,3 +15,5 @@ export 'tags_list.dart';
 export 'page_title.dart';
 export 'quantity.dart';
 export 'dropdown.dart';
+export 'price_range.dart';
+export 'stars_list.dart';

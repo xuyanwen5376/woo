@@ -1,4 +1,4 @@
-import '../locale_keys.dart';
+  import '../locale_keys.dart';
 
 /// 多语言 中文
 Map<String, String> localeZh = {
@@ -105,7 +105,7 @@ Map<String, String> localeZh = {
   LocaleKeys.searchFilterBrand: '品牌',
   LocaleKeys.searchFilterGender: '性别',
   LocaleKeys.searchFilterCondition: '状况',
-
+  LocaleKeys.searchFilterStars: '星级',
   // 我的
   LocaleKeys.myTabWishlist: '喜欢',
   LocaleKeys.myTabFollowing: '关注',

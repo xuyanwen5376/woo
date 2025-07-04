@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_woo_course_2025/common/components/refresh_mixin.dart';
 import 'package:get/get.dart';
 
@@ -87,16 +89,30 @@ class HomeController extends GetxController with RefreshMixin {
     // 新商品
     newProductProductList = await ProductApi.products(ProductsReq());
 
-    // 保存离线数据 - 分类
-    Storage().setJson(Constants.storageProductsCategories, categoryItems);
-
     // 颜色
     attributeColors = await ProductApi.attributes(1);
 
     // 尺寸
     attributeSizes = await ProductApi.attributes(2);
 
-    // 保存离线数据
+        // 品牌
+    var attributeBrand = await ProductApi.attributes(3);
+    // 性别
+    var attributeGender = await ProductApi.attributes(4);
+    // 新旧
+    var attributeCondition = await ProductApi.attributes(5);
+ 
+    // 保存离线数据 - 分类
+    Storage().setJson(Constants.storageProductsCategories, categoryItems);
+    Storage().setString(
+        Constants.storageProductsAttributesBrand, jsonEncode(attributeBrand));
+    Storage().setString(
+        Constants.storageProductsAttributesGender, jsonEncode(attributeGender));
+    Storage().setString(Constants.storageProductsAttributesCondition,
+        jsonEncode(attributeCondition));
+
+
+
     // 基础
     Storage().setJson(
       Constants.storageProductsAttributesColors,
