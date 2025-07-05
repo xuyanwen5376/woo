@@ -4,6 +4,9 @@ class Constants {
   static const wpApiBaseUrl = 'https://wpapi.ducafecat.tech';
   static const wpApiBaseUrl2 = 'https://videoapi.ducafecat.tech';
 
+  static const String apiBaseUrl =
+      "https://mock.apifox.cn/m1/2249037-0-default";
+
   // 本地存储key
   static const storageLanguageCode = 'language_code';
   static const storageAlreadyOpen = 'already_open'; // 首次打开

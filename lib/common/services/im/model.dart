@@ -51,35 +51,38 @@ class IMStatus {
   IMStatus({this.server, this.user});
 }
 
-
-
-
 class UserModel {
   String? id;
   String? username;
   String? nickName;
   String? avatar;
+  String? cover;
 
-  UserModel({
-    this.id,
-    this.username,
-    this.nickName,
-    this.avatar,
-  });
+  UserModel({this.id, this.username, this.nickName, this.avatar, this.cover});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      id: json['id'] as String?,
-      username: json['attributes']['username'] as String?,
-      nickName: json['attributes']['nick_name'] as String?,
-      avatar: json['attributes']['avatar'] as String?,
+      id: json['uid'] as String? ?? json['id'] as String?,
+      username:
+          json['username'] as String? ??
+          json['attributes']?['username'] as String?,
+      nickName:
+          json['nickname'] as String? ??
+          json['attributes']?['nick_name'] as String?,
+      avatar:
+          json['avator'] as String? ??
+          json['avatar'] as String? ??
+          json['attributes']?['avatar'] as String?,
+      cover:
+          json['cover'] as String? ?? json['attributes']?['cover'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'username': username,
-        'nick_name': nickName,
-        'avatar': avatar,
-      };
+    'id': id,
+    'username': username,
+    'nick_name': nickName,
+    'avatar': avatar,
+    'cover': cover,
+  };
 }

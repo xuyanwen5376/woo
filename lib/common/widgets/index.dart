@@ -15,4 +15,5 @@ export 'initials.dart';
 export 'avatar.dart';
 export 'divider.dart';
 export 'bubble.dart';
-export 'space.dart';
+export 'space.dart';  
+export 'text_max_lines.dart';
