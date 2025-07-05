@@ -100,9 +100,7 @@ class RoutePages {
       name: RouteNames.chatChatFindUser,
       page: () => const ChatFindUserPage(),
     ),
-    GetPage(
-      name: RouteNames.chatChat,
-      page: () => const ChatPage(),
-    ),
+    GetPage(name: RouteNames.chatChat, page: () => const ChatPage()),
+    GetPage(name: RouteNames.post, page: () => const PostPage()),
   ];
 }

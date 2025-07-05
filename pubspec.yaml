@@ -107,6 +107,19 @@ dependencies:
 
   # 腾讯云 IM SDK
   tencent_cloud_chat_sdk: ^8.6.7019+5
+  
+  # 视频播放
+  video_player: ^2.10.0
+  # 视频压缩
+  video_compress: ^3.1.4
+  # 图片压缩
+  flutter_image_compress: ^2.4.0
+  # 图片裁剪
+  extended_image: ^9.1.0
+   # 播放
+  chewie: ^1.12.1
+  fluttertoast: ^8.2.12
+  animate_do: ^4.2.0
 
 dev_dependencies:
   flutter_test:

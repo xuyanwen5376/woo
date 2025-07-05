@@ -15,3 +15,4 @@ export 'initials.dart';
 export 'avatar.dart';
 export 'divider.dart';
 export 'bubble.dart';
+export 'space.dart';

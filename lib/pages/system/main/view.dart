@@ -66,6 +66,10 @@ class _MainViewGetX extends GetView<MainController> {
                   count: CartService.to.lineItemsCount,
                 ),
                 NavigationItemModel(
+                  label: 'post',
+                  icon: AssetsSvgs.navProfileSvg,
+                ),
+                NavigationItemModel(
                   label: LocaleKeys.tabBarMessage.tr,
                   icon: AssetsSvgs.navMessageSvg,
                   count: 9 //UnreadCount.value,
@@ -81,6 +85,7 @@ class _MainViewGetX extends GetView<MainController> {
         ),
         // 内容页
         body: PageView(
+           /// 禁止滑动
           physics: const NeverScrollableScrollPhysics(),
           controller: controller.pageController,
           onPageChanged: controller.onIndexChanged,
@@ -88,6 +93,7 @@ class _MainViewGetX extends GetView<MainController> {
             // 加入空页面占位
             HomePage(),
             CartIndexPage(),
+            PostPage(),
             MsgIndexPage(),
             MyIndexPage(),
           ],

@@ -46,4 +46,10 @@ class Constants {
   // 图片服务器
   static const imageServer =
       "https://ducafecat.oss-cn-beijing.aliyuncs.com/ducafecat-video-flutter";
+
+  // 图片选取数量
+  static const maxAssets = 9;
+
+  // 视频录制最大时间 秒
+  static const double maxVideoDuration = 30;
 }

@@ -24,4 +24,6 @@ export 'woo/continents_model/continents_model.dart';
 export 'woo/continents_model/country.dart';
 export 'woo/coupons_model/coupons_model.dart';
 
- 
+export 'timeline/comment.dart';
+export 'timeline/timeline.dart';
+export 'timeline/like.dart';

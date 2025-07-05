@@ -72,7 +72,7 @@ class ProductDetailsController extends GetxController
     Get.to(
       GalleryWidget(
         initialIndex: index,
-        items: bannerItems.map<String>((e) => e.value!).toList(),
+        imgUrls: bannerItems.map<String>((e) => e.value!).toList(),
       ),
     );
   }
