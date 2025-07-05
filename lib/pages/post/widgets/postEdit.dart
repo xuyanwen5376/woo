@@ -47,11 +47,8 @@ class _PostViewGetX extends GetView<PostController> {
   // ignore: unused_field
   CompressMediaFile? _videoCompressFile;
 
-  // 内容输入控制器
-  final TextEditingController _contentController = TextEditingController();
-
   // 最大内容长度
-  final int _maxContentLength = 20;
+  final int _maxContentLength = 500;
 
   // 菜单项
   List<MenuItemModel> _menus = [
@@ -71,7 +68,7 @@ class _PostViewGetX extends GetView<PostController> {
     return LimitedBox(
       maxHeight: 200,
       child: TextField(
-        controller: _contentController,
+        controller: controller.contentController,
         style: const TextStyle(
           color: Colors.black54,
           fontSize: 18,
@@ -87,7 +84,7 @@ class _PostViewGetX extends GetView<PostController> {
             fontWeight: FontWeight.w500,
           ),
           border: InputBorder.none,
-          counterText: _contentController.text.isEmpty ? "" : null,
+          counterText: controller.contentController.text.isEmpty ? "" : null,
         ),
         onChanged: (value) {
           // setState(() {});
@@ -429,7 +426,9 @@ class _PostViewGetX extends GetView<PostController> {
               Padding(
                 padding: EdgeInsets.only(right: AppSpace.appbar),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.post();
+                  },
                   child: const Text("发布"),
                 ),
               ),

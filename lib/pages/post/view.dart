@@ -9,7 +9,7 @@ class PostPage extends GetView<PostController> {
 
   // 主视图
   Widget _buildView() {
-    return const Center(child: PostEditPage());
+    return PostEditPage();
   }
 
   @override

@@ -1,8 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_woo_course_2025/common/index.dart';
 import 'package:get/get.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 class PostController extends GetxController {
   PostController();
+
+  // 内容输入控制器
+  final TextEditingController contentController = TextEditingController();
 
   List<AssetEntity> selectedAssets = [];
 
@@ -32,6 +37,14 @@ class PostController extends GetxController {
   void setRemoveState(bool isRemove) {
     isWillRemove = isRemove;
     update(["post"]);
+  }
+
+  // 发布
+  void post() {
+    if (contentController.text.isEmpty) {
+      Loading.toast("请输入内容"); 
+      return;
+    }
   }
 
   void onTap() {}
