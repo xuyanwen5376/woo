@@ -66,7 +66,7 @@ class _MainViewGetX extends GetView<MainController> {
                   count: CartService.to.lineItemsCount,
                 ),
                 NavigationItemModel(
-                  label: 'post',
+                  label: '动态',
                   icon: AssetsSvgs.navProfileSvg,
                 ),
                 NavigationItemModel(
@@ -93,7 +93,7 @@ class _MainViewGetX extends GetView<MainController> {
             // 加入空页面占位
             HomePage(),
             CartIndexPage(),
-            PostPage(),
+            DynamicPage(),
             MsgIndexPage(),
             MyIndexPage(),
           ],

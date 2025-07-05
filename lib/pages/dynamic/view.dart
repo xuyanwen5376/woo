@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_woo_course_2025/common/widgets/index.dart';
+import 'package:flutter_woo_course_2025/pages/index.dart';
 import 'package:get/get.dart';
 
+import '../../common/index.dart';
 import 'index.dart';
 
 class DynamicPage extends GetView<DynamicController> {
@@ -8,8 +11,14 @@ class DynamicPage extends GetView<DynamicController> {
 
   // 主视图
   Widget _buildView() {
-    return const Center(
-      child: Text("DynamicPage"),
+    return ButtonWidget(
+      onTap: () {
+        // 跳转到post
+        Get.toNamed(   
+          RouteNames.post
+        );
+      },
+      child: const Text("跳转"),
     );
   }
 
@@ -21,9 +30,7 @@ class DynamicPage extends GetView<DynamicController> {
       builder: (_) {
         return Scaffold(
           appBar: AppBar(title: const Text("dynamic")),
-          body: SafeArea(
-            child: _buildView(),
-          ),
+          body: SafeArea(child: _buildView()),
         );
       },
     );

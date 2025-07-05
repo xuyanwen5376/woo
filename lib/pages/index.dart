@@ -45,3 +45,4 @@ export 'msg/msg_index/index.dart';
 export 'chat/chat_find_user/index.dart';
 export 'chat/chat/index.dart';
 export 'post/index.dart';
+export 'dynamic/index.dart';

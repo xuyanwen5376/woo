@@ -35,11 +35,7 @@ class _PostViewGetX extends GetView<PostController> {
   // 发布类型
   PostType? _postType = PostType.image;
 
-  // 是否开始拖拽
-  bool _isDragNow = false;
-
-  // 是否将要删除
-  bool _isWillRemove = false;
+  // 拖拽状态现在在 controller 中管理
 
   // 是否被拖拽到
   bool _isWillOrder = false;
@@ -67,6 +63,8 @@ class _PostViewGetX extends GetView<PostController> {
   double spacing = 10;
 
   double imagePadding = 10;
+
+  double itemW = 100;
 
   // 内容输入
   Widget _buildContentInput() {
@@ -129,20 +127,23 @@ class _PostViewGetX extends GetView<PostController> {
       padding: EdgeInsets.all(spacing),
       child: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          final double width =
+          itemW =
               (constraints.maxWidth - spacing * 2 - imagePadding * 2 * 3) / 3;
-          return Wrap(
-            spacing: spacing,
-            runSpacing: spacing,
-            children: [
-              // 图片
-              for (var item in controller.selectedAssets)
-                _buildPhotoItem(width, item),
+          return Align(
+            alignment: Alignment.centerLeft,
+            child: Wrap(
+              spacing: spacing,
+              runSpacing: spacing,
+              children: [
+                // 图片
+                for (var item in controller.selectedAssets)
+                  _buildPhotoItem(itemW, item),
 
-              // 添加按钮
-              if (controller.selectedAssets.length < Constants.maxAssets)
-                _buildAddBtn(context, width),
-            ],
+                // 添加按钮
+                if (controller.selectedAssets.length < Constants.maxAssets)
+                  _buildAddBtn(context, itemW),
+              ],
+            ),
           );
         },
       ),
@@ -158,18 +159,18 @@ class _PostViewGetX extends GetView<PostController> {
 
       // 当可拖动对象开始被拖动时调用。
       onDragStarted: () {
-        _isDragNow = true;
+        controller.setDragState(true);
       },
       // 当可拖动对象被放下时调用。
       onDragEnd: (details) {
-        _isDragNow = false;
+        controller.setDragState(false);
       },
       // 当 draggable 被放置并被 [DragTarget] 接受时调用。
       onDragCompleted: () {},
 
       // 当 draggable 被放置但未被 [DragTarget] 接受时调用。
       onDraggableCanceled: (velocity, offset) {
-        _isDragNow = false;
+        controller.setDragState(false);
       },
 
       // 拖动进行时显示在指针下方的小部件。
@@ -298,7 +299,12 @@ class _PostViewGetX extends GetView<PostController> {
         }
       },
       child: Container(
-        color: Colors.black12,
+        margin: EdgeInsets.all(spacing),
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          color: Colors.black12,
+          borderRadius: BorderRadius.circular(3),
+        ),
         width: width,
         height: width,
         child: const Icon(Icons.add, size: 48, color: Colors.black54),
@@ -311,7 +317,7 @@ class _PostViewGetX extends GetView<PostController> {
     return DragTarget(
       builder: (context, candidateData, rejectedData) {
         return Container(
-          color: _isWillRemove ? Colors.red[300] : Colors.red[200],
+          color: controller.isWillRemove ? Colors.red[300] : Colors.red[200],
           height: 100,
           child: Center(
             child: Column(
@@ -320,14 +326,16 @@ class _PostViewGetX extends GetView<PostController> {
                 // 图标
                 Icon(
                   Icons.delete,
-                  color: _isWillRemove ? Colors.white : Colors.white70,
+                  color:
+                      controller.isWillRemove ? Colors.white : Colors.white70,
                   size: 32,
                 ),
                 // 文字
                 Text(
                   '拖拽到这里删除',
                   style: TextStyle(
-                    color: _isWillRemove ? Colors.white : Colors.white70,
+                    color:
+                        controller.isWillRemove ? Colors.white : Colors.white70,
                   ),
                 ),
               ],
@@ -336,20 +344,16 @@ class _PostViewGetX extends GetView<PostController> {
         );
       },
       onWillAccept: (AssetEntity? data) {
-        // setState(() {
-        _isWillRemove = true;
-        // });
+        controller.setRemoveState(true);
         return true;
       },
       onAccept: (AssetEntity data) {
         controller.selectedAssets.remove(data);
-        _isWillRemove = false;
+        controller.setRemoveState(false);
         controller.update(["post"]); // 刷新视图
       },
       onLeave: (AssetEntity? data) {
-        // setState(() {
-        _isWillRemove = false;
-        // });
+        controller.setRemoveState(false);
       },
     );
   }
@@ -433,7 +437,7 @@ class _PostViewGetX extends GetView<PostController> {
           ),
 
           // 要显示的持久底部工作表
-          bottomSheet: _isDragNow ? _buildRemoveBar() : null,
+          bottomSheet: controller.isDragNow ? _buildRemoveBar() : null,
 
           body: _mainView(),
         );

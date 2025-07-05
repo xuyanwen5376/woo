@@ -7,7 +7,9 @@ class DynamicController extends GetxController {
     update(["dynamic"]);
   }
 
-  void onTap() {}
+  void onTap() {
+    
+  }
 
   // @override
   // void onInit() {

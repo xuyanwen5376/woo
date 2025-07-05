@@ -9,9 +9,7 @@ class PostPage extends GetView<PostController> {
 
   // 主视图
   Widget _buildView() {
-    return const Center(
-      child: PostEditPage(),
-    );
+    return const Center(child: PostEditPage());
   }
 
   @override
@@ -21,9 +19,14 @@ class PostPage extends GetView<PostController> {
       id: "post",
       builder: (_) {
         return Scaffold(
-          appBar: AppBar(title: const Text("post")),
           body: SafeArea(
-            child: _buildView(),
+            child: GestureDetector(
+              onTap: () {
+                // 点击空白处收起键盘
+                FocusScope.of(context).unfocus();
+              },
+              child: _buildView(),
+            ),
           ),
         );
       },

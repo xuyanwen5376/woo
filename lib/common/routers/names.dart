@@ -45,4 +45,5 @@ class RouteNames {
   static const chatChatFindUser = '/chat_chat_find_user';
   static const chatChat = '/chat_chat';
   static const post = '/post';
+  static const dynamic = '/dynamic';
 }
