@@ -27,16 +27,12 @@ class DynamicController extends GetxController {
     );
 
     try {
-      items = await TimelineApi.pageList();
-      print("获取到的数据: ${items.length} 条");
-      print("数据内容: $items");
-    } catch (e) {
-      print("获取数据失败: $e");
+      items = await TimelineApi.pageList(); 
+    } catch (e) { 
       items = []; // 确保为空数组而不是 null
     }
 
-    update(["dynamic"]);
-    print("数据更新完成");
+    update(["dynamic"]); 
   }
 
   void onTap() {}

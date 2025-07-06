@@ -17,7 +17,7 @@ class WPHttpService extends GetxService {
 
     // 初始 dio
     var options = BaseOptions(
-      baseUrl: Constants.apiBaseUrl,
+      baseUrl: Constants.wpApiBaseUrl,
       connectTimeout: const Duration(seconds: 10), // 10000, // 10秒
       receiveTimeout: const Duration(seconds: 5), // 5000, // 5秒
       headers: {},
@@ -30,17 +30,28 @@ class WPHttpService extends GetxService {
     _dio.interceptors.add(RequestInterceptors());
   }
 
+  String getBaseUrl(String path) {
+    if (path.contains('/timeline') || path.contains('/news')) {
+      return Constants.wpApiBaseUrl3;
+    }  else if (path.contains('/findList')) {
+      return Constants.wpApiBaseUrl2;
+    }
+    // 默认
+    return Constants.wpApiBaseUrl;
+  }
+
   Future<Response> get(
     String url, {
     Map<String, dynamic>? params,
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    Options requestOptions = options ?? Options();
+    String baseUrl = getBaseUrl(url);
+    String fullUrl = baseUrl + url;
     Response response = await _dio.get(
-      url,
+      fullUrl,
       queryParameters: params,
-      options: requestOptions,
+      options: options,
       cancelToken: cancelToken,
     );
     return response;
@@ -52,11 +63,12 @@ class WPHttpService extends GetxService {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    var requestOptions = options ?? Options();
+    String baseUrl = getBaseUrl(url);
+    String fullUrl = baseUrl + url;
     Response response = await _dio.post(
-      url,
+      fullUrl,
       data: data ?? {},
-      options: requestOptions,
+      options: options,
       cancelToken: cancelToken,
     );
     return response;
@@ -68,11 +80,12 @@ class WPHttpService extends GetxService {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    var requestOptions = options ?? Options();
+    String baseUrl = getBaseUrl(url);
+    String fullUrl = baseUrl + url;
     Response response = await _dio.put(
-      url,
+      fullUrl,
       data: data ?? {},
-      options: requestOptions,
+      options: options,
       cancelToken: cancelToken,
     );
     return response;
@@ -84,11 +97,12 @@ class WPHttpService extends GetxService {
     Options? options,
     CancelToken? cancelToken,
   }) async {
-    var requestOptions = options ?? Options();
+    String baseUrl = getBaseUrl(url);
+    String fullUrl = baseUrl + url;
     Response response = await _dio.delete(
-      url,
+      fullUrl,
       data: data ?? {},
-      options: requestOptions,
+      options: options,
       cancelToken: cancelToken,
     );
     return response;

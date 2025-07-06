@@ -3,8 +3,7 @@ class Constants {
   // wp 服务器
   static const wpApiBaseUrl = 'https://wpapi.ducafecat.tech';
   static const wpApiBaseUrl2 = 'https://videoapi.ducafecat.tech';
-
-  static const String apiBaseUrl =
+  static const wpApiBaseUrl3 =
       "https://mock.apifox.cn/m1/2249037-0-default";
 
   // 本地存储key
